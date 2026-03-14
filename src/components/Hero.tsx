@@ -144,20 +144,19 @@ export default function Hero() {
           className="mb-6"
         >
           <div className="relative w-28 h-28 mx-auto rounded-full p-[3px]" style={{ background: 'conic-gradient(from 0deg, #0ea5e9, #06b6d4, #34d399, #fbbf24, #0ea5e9, #0ea5e9)' }}>
+            {/* Fallback initials - always rendered behind the image */}
+            <div className="w-full h-full rounded-full flex items-center justify-center text-3xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #0c1929, #0f2640)' }}>
+              {profile.initials}
+            </div>
+            {/* Real photo - overlays initials when loaded */}
             <img
               src="/vivek.jpg"
               alt="Vivek Raj Singh"
-              className="w-full h-full rounded-full object-cover border-2 border-[#0a0a0a]"
+              className="absolute inset-[3px] w-[calc(100%-6px)] h-[calc(100%-6px)] rounded-full object-cover border-2 border-[#0a0a0a]"
               onError={(e) => {
-                const target = e.currentTarget;
-                target.style.display = 'none';
-                const fallback = target.nextElementSibling as HTMLElement;
-                if (fallback) fallback.style.display = 'flex';
+                e.currentTarget.style.display = 'none';
               }}
             />
-            <div className="w-full h-full rounded-full bg-[#0a0a0a] items-center justify-center text-3xl font-bold text-white absolute inset-[3px]" style={{ display: 'none' }}>
-              {profile.initials}
-            </div>
           </div>
         </motion.div>
 
