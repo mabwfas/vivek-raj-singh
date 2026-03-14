@@ -4,8 +4,8 @@ export const profile = {
   title: 'Full-Stack Developer & Digital Problem Solver',
   tagline: 'I don\'t just write code — I solve the problems that keep businesses stuck',
   bio: `Results-driven full-stack developer with 6+ years of experience solving complex technical challenges for startups and enterprises across fintech, SaaS, e-commerce, and healthcare. Specializing in React, Node.js, Python, and cloud architecture with a proven track record of rescuing failing projects and turning them into revenue-generating platforms. 40+ projects shipped, $12M+ in cumulative client revenue generated, and a 100% client retention rate. I approach every project as a business problem first, a technical problem second — because great code that doesn't drive results is just expensive text.`,
-  email: 'vivekrajsingh.dev@gmail.com',
-  phone: '+91 98765 43213',
+  email: 'shubhamrvilgax@gmail.com',
+  phone: '+91 7071 984914',
   location: 'Lucknow, UP, India',
 };
 
@@ -195,23 +195,6 @@ export const testimonials = [
   },
 ];
 
-export const fiverrStats = {
-  rating: '5.0',
-  reviews: '35+',
-  responseTime: '1 hour',
-  level: 'Top Rated',
-};
-
-export const fiverrReviews = [
-  { username: 'techstartup_ceo', country: 'US', flag: '🇺🇸', rating: 5, quote: 'Vivek rebuilt our entire SaaS backend in 4 weeks. Revenue went from $8K to $45K/mo within 3 months. Worth every penny.', price: '$5,000–8,000', duration: '4 weeks' },
-  { username: 'sarah_fintech', country: 'UK', flag: '🇬🇧', rating: 5, quote: 'The payment reconciliation system he built handles millions of transactions without breaking a sweat. Incredible architecture.', price: '$8,000–12,000', duration: '6 weeks' },
-  { username: 'retail_analytics', country: 'AU', flag: '🇦🇺', rating: 5, quote: 'Our e-commerce conversion rate jumped 34% after Vivek optimized our platform. The analytics dashboard alone was worth the investment.', price: '$3,000–5,000', duration: '3 weeks' },
-  { username: 'startup_founder42', country: 'US', flag: '🇺🇸', rating: 5, quote: 'Three agencies failed before we found Vivek. He shipped everything in half the time and under budget. Absolute legend.', price: '$6,000–10,000', duration: '5 weeks' },
-  { username: 'devops_mike', country: 'DE', flag: '🇩🇪', rating: 5, quote: 'The restaurant website Vivek built for Tandoore is stunning. Bookings jumped 45% and customers love the online ordering. Incredible quality.', price: '$4,000–6,000', duration: '3 weeks' },
-  { username: 'healthtech_anna', country: 'CA', flag: '🇨🇦', rating: 5, quote: 'Built our patient management platform from scratch. HIPAA compliant, beautiful UI, scales perfectly. Repeat client for sure.', price: '$7,000–10,000', duration: '6 weeks', repeat: true },
-  { username: 'ecom_brand_owner', country: 'IN', flag: '🇮🇳', rating: 5, quote: 'Vivek doesn\'t just write code — he understands business. Our D2C brand revenue went from ₹5L to ₹45L monthly after his work.', price: '$2,000–4,000', duration: '4 weeks' },
-  { username: 'enterprise_pm', country: 'SG', flag: '🇸🇬', rating: 5, quote: 'The recruitment platform he built reduced our hiring time by 73%. Our HR team can\'t stop raving about it.', price: '$10,000–15,000', duration: '8 weeks' },
-];
 
 export const youtube = {
   channel: 'Vivek Raj Dev',

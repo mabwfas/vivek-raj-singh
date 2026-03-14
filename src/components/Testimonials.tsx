@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { Star, Quote } from 'lucide-react';
 import { testimonials } from '../data';
 
-export default function FiverrReviews() {
+export default function Testimonials() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 

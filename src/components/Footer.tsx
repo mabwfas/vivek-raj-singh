@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Twitter } from 'lucide-react';
 
 const socials = [
-  { icon: Github, href: 'https://github.com/vivekrajsingh', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/vivekrajsingh', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://twitter.com/vivekrajdev', label: 'Twitter' },
 ];
 

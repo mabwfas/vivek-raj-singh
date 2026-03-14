@@ -1,7 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useCallback } from 'react';
 import { projects } from '../data';
-import { Star, Zap, Shield, TrendingUp, Smartphone, Activity, ExternalLink } from 'lucide-react';
+import { Star, TrendingUp, Smartphone, Activity, ExternalLink } from 'lucide-react';
 
 const projectImages: Record<string, string> = {
   'Clear Edge Hauling': '/projects/clearedge.jpg',
@@ -175,8 +175,6 @@ function FeaturedProjectCard({
   }, []);
 
   const imgSrc = projectImages[project.title];
-  const isFinance = project.title === 'NidhiPay';
-  const isHealth = project.title === 'VitalSync';
 
   return (
     <motion.div
@@ -354,27 +352,12 @@ function FeaturedProjectCard({
 
           {/* Feature highlights */}
           <div className="grid grid-cols-2 gap-2 mb-6">
-            {(isFinance
-              ? [
-                  { icon: Shield, label: 'Secure Payments' },
-                  { icon: Zap, label: 'AI Categorization' },
-                  { icon: Star, label: '4.9★ Rating' },
-                  { icon: TrendingUp, label: '628K Downloads' },
-                ]
-              : isHealth
-              ? [
-                  { icon: Activity, label: '15+ Wearables' },
-                  { icon: Smartphone, label: 'iOS & Android' },
-                  { icon: Star, label: '4.8★ Rating' },
-                  { icon: TrendingUp, label: '1.52M Users' },
-                ]
-              : [
-                  { icon: Activity, label: 'Real-time Sync' },
-                  { icon: Smartphone, label: 'Cross-Platform' },
-                  { icon: Star, label: 'AI-Powered' },
+            {[
+                  { icon: Activity, label: 'Live & Active' },
+                  { icon: Smartphone, label: 'Responsive Design' },
+                  { icon: Star, label: 'Client Approved' },
                   { icon: TrendingUp, label: project.metric },
-                ]
-            ).map((feat, fi) => (
+                ].map((feat, fi) => (
               <motion.div
                 key={feat.label}
                 initial={{ opacity: 0, x: -10 }}
@@ -402,9 +385,9 @@ function FeaturedProjectCard({
                 <span className="text-[10px] text-zinc-600 font-mono">Client: {project.client}</span>
               </div>
             </div>
-            {(project as any).url && (
+            {project.url && (
               <a
-                href={(project as any).url}
+                href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3.5 py-2 rounded-lg border transition-all duration-300 hover:-translate-y-0.5 flex-shrink-0"
@@ -434,31 +417,15 @@ function FeaturedProjectCard({
 
       {/* ── Floating stat widgets (only on desktop) ── */}
       <div className="hidden md:block">
-        {isFinance ? (
-          <>
-            <FloatingWidget
-              icon={TrendingUp}
-              label="Monthly GMV"
-              value="₹800 Cr+"
-              color={project.color}
-              delay={0.8}
-              position="top-5 right-5 md:top-auto md:bottom-20 md:left-[38%]"
-            />
-            <MiniSparkline color={project.color} delay={0.9} />
-          </>
-        ) : (
-          <>
-            <FloatingWidget
-              icon={Activity}
-              label="Result"
-              value={isHealth ? '1.52M' : project.metric}
-              color={project.color}
-              delay={0.8}
-              position="top-5 left-5 md:top-auto md:bottom-20 md:right-[38%]"
-            />
-            <MiniSparkline color={project.color} delay={0.9} />
-          </>
-        )}
+        <FloatingWidget
+          icon={Activity}
+          label="Result"
+          value={project.metric}
+          color={project.color}
+          delay={0.8}
+          position="top-5 left-5 md:top-auto md:bottom-20 md:right-[38%]"
+        />
+        <MiniSparkline color={project.color} delay={0.9} />
       </div>
 
       {/* ── Scanline overlay on hover ── */}
@@ -643,9 +610,9 @@ function ProjectCard({
               <span className="text-[9px] text-zinc-600 font-mono">Client: {project.client}</span>
             </div>
           </div>
-          {(project as any).url && (
+          {project.url && (
             <a
-              href={(project as any).url}
+              href={project.url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border transition-all duration-300 hover:-translate-y-0.5 flex-shrink-0"
@@ -738,8 +705,8 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Rest of projects — 3-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Rest of projects */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {rest.map((project, index) => (
             <ProjectCard
               key={project.title}

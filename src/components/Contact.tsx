@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useCallback, useState } from 'react';
-import { Mail, MapPin, Phone, Send, MessageCircle, Github, Linkedin, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, MessageCircle, CheckCircle } from 'lucide-react';
 import { profile } from '../data';
 
 function InteractiveCard({
@@ -148,60 +148,9 @@ export default function Contact() {
               </div>
             </InteractiveCard>
 
-            {/* Social Links */}
-            <div className="grid grid-cols-2 gap-3">
-              <motion.a
-                href="https://github.com/vivekrajsingh"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 10 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.35 }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="dark-card corner-squares rounded-xl p-4 flex items-center gap-3 group block glass-glow"
-              >
-                <span className="sq sq-tl" /><span className="sq sq-tr" />
-                <span className="sq sq-bl" /><span className="sq sq-br" />
-                <div
-                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105"
-                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-                >
-                  <Github size={15} className="text-white" />
-                </div>
-                <div>
-                  <p className="text-[11px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.15em] font-mono">GitHub</p>
-                  <p className="text-[12px] text-zinc-300 group-hover:text-white transition-colors">View Code</p>
-                </div>
-              </motion.a>
-
-              <motion.a
-                href="https://linkedin.com/in/vivekrajsingh"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 10 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.35 }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="dark-card corner-squares rounded-xl p-4 flex items-center gap-3 group block glass-glow"
-              >
-                <span className="sq sq-tl" /><span className="sq sq-tr" />
-                <span className="sq sq-bl" /><span className="sq sq-br" />
-                <div
-                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105"
-                  style={{ background: '#0077B510', border: '1px solid #0077B520' }}
-                >
-                  <Linkedin size={15} style={{ color: '#0077B5' }} />
-                </div>
-                <div>
-                  <p className="text-[11px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.15em] font-mono">LinkedIn</p>
-                  <p className="text-[12px] text-zinc-300 group-hover:text-white transition-colors">Connect</p>
-                </div>
-              </motion.a>
-            </div>
-
             {/* WhatsApp CTA */}
             <motion.a
-              href={`https://wa.me/919876543213`}
+              href={`https://wa.me/917071984914`}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 10 }}
