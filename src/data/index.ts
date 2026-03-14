@@ -159,7 +159,7 @@ export const education = [
 ];
 
 export const awards = [
-  { title: 'Fiverr Top Rated Seller', detail: '100% five-star rating across 35+ projects with $2K–$15K average project value' },
+  { title: '100% Client Retention Rate', detail: 'Every single client has returned or referred — zero churn across 40+ projects' },
   { title: 'Freshworks Engineering Excellence', detail: 'For architecting the real-time collaboration engine serving 50K concurrent users' },
   { title: '#1 Local SEO Rankings', detail: 'Clear Edge Hauling ranks #1 for multiple "junk removal" keywords in Santa Clara County' },
   { title: 'E-Commerce Revenue Growth', detail: '34% average conversion rate lift across client stores including Curioh Pets UK' },

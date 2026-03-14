@@ -245,17 +245,17 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-3 mb-10"
         >
           <div className="inline-flex items-center gap-1.5 rounded-full glass-raised px-3.5 py-1.5 text-[11px]">
-            <Star size={11} className="text-[#1dbf73] fill-[#1dbf73]" />
-            <span className="text-zinc-400">Fiverr Top Rated</span>
-            <span className="text-white font-semibold">5.0</span>
+            <Star size={11} className="text-brand fill-brand" />
+            <span className="text-zinc-400">Client Rating</span>
+            <span className="text-white font-semibold">5.0/5.0</span>
           </div>
           <div className="inline-flex items-center gap-1.5 rounded-full glass-raised px-3.5 py-1.5 text-[11px]">
             <span className="text-brand">&#9733;</span>
             <span className="text-zinc-400">$12M+ Revenue Generated</span>
           </div>
           <div className="inline-flex items-center gap-1.5 rounded-full glass-raised px-3.5 py-1.5 text-[11px]">
-            <span className="text-[#1dbf73]">&#10003;</span>
-            <span className="text-zinc-400">35+ Reviews</span>
+            <span className="text-emerald-400">&#10003;</span>
+            <span className="text-zinc-400">100% Client Retention</span>
           </div>
         </motion.div>
 

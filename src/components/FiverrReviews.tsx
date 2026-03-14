@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Star } from 'lucide-react';
-import { fiverrStats, fiverrReviews } from '../data';
+import { Star, Quote } from 'lucide-react';
+import { testimonials } from '../data';
 
 export default function FiverrReviews() {
   const ref = useRef(null);
@@ -17,12 +17,12 @@ export default function FiverrReviews() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="section-heading">Client Reviews</span>
+          <span className="section-heading">Testimonials</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-4">
-            <span className="gradient-text">Fiverr</span> Client Feedback
+            What <span className="gradient-text">Clients</span> Say
           </h2>
           <p className="text-zinc-500 max-w-xl mx-auto text-sm">
-            Real reviews from real clients. 100% five-star rating across 35+ projects.
+            Real feedback from real clients. Every project delivered on time, on budget, and beyond expectations.
           </p>
         </motion.div>
 
@@ -36,65 +36,60 @@ export default function FiverrReviews() {
           <div className="flex items-center gap-2">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} className="text-[#1dbf73] fill-[#1dbf73]" />
+                <Star key={i} size={14} className="text-brand fill-brand" />
               ))}
             </div>
-            <span className="text-white font-bold text-lg">{fiverrStats.rating}</span>
+            <span className="text-white font-bold text-lg">5.0</span>
           </div>
           <div className="w-[1px] h-5 bg-white/[0.06]" />
           <div className="text-sm">
-            <span className="text-zinc-500">Reviews: </span>
-            <span className="text-white font-semibold">{fiverrStats.reviews}</span>
+            <span className="text-zinc-500">Projects: </span>
+            <span className="text-white font-semibold">40+</span>
           </div>
           <div className="w-[1px] h-5 bg-white/[0.06]" />
           <div className="text-sm">
-            <span className="text-zinc-500">Response: </span>
-            <span className="text-white font-semibold">{fiverrStats.responseTime}</span>
+            <span className="text-zinc-500">Retention: </span>
+            <span className="text-white font-semibold">100%</span>
           </div>
           <div className="w-[1px] h-5 bg-white/[0.06]" />
-          <div className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: 'rgba(29,191,115,0.12)', color: '#1dbf73', border: '1px solid rgba(29,191,115,0.2)' }}>
-            {fiverrStats.level}
+          <div className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold" style={{ background: 'rgba(14,165,233,0.12)', color: '#0ea5e9', border: '1px solid rgba(14,165,233,0.2)' }}>
+            Verified Clients
           </div>
         </motion.div>
 
-        {/* Review cards grid */}
+        {/* Testimonial cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {fiverrReviews.map((review, i) => (
+          {testimonials.map((testimonial, i) => (
             <motion.div
-              key={review.username}
+              key={testimonial.author}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
-              className="dark-card corner-squares rounded-xl p-5 group hover:border-[#1dbf73]/20 transition-all duration-300"
+              className="dark-card corner-squares rounded-xl p-6 group hover:border-brand/20 transition-all duration-300"
             >
               <CornerSquares />
               <div className="relative z-10">
-                {/* Stars */}
-                <div className="flex items-center gap-1 mb-3">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} size={12} className="text-[#1dbf73] fill-[#1dbf73]" />
-                  ))}
+                {/* Quote icon */}
+                <div className="mb-4">
+                  <Quote size={20} className="text-brand/40" />
                 </div>
 
                 {/* Quote */}
-                <p className="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-3">
-                  "{review.quote}"
+                <p className="text-sm text-zinc-400 leading-relaxed mb-5">
+                  "{testimonial.quote}"
                 </p>
 
-                {/* Footer */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{review.flag}</span>
-                    <div>
-                      <span className="text-xs text-white font-medium">{review.username}</span>
-                      {review.repeat && (
-                        <span className="ml-2 text-[10px] text-[#1dbf73] font-medium">Repeat Client</span>
-                      )}
-                    </div>
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.04]">
+                  <div
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-bold text-white flex-shrink-0"
+                    style={{ background: 'linear-gradient(135deg, #0ea5e9, #06b6d4)' }}
+                  >
+                    {testimonial.author.split(' ').map(n => n[0]).join('')}
                   </div>
-                  <div className="text-right">
-                    <div className="text-[11px] text-zinc-500">{review.price}</div>
-                    <div className="text-[10px] text-zinc-600">{review.duration}</div>
+                  <div>
+                    <span className="text-sm text-white font-medium block">{testimonial.author}</span>
+                    <span className="text-[11px] text-zinc-500">{testimonial.role}</span>
                   </div>
                 </div>
               </div>
