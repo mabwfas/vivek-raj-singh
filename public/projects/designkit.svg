@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="720" viewBox="0 0 520 720">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1520"/>
+      <stop offset="100%" stop-color="#0d1a28"/>
+    </linearGradient>
+    <linearGradient id="card6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#122030"/>
+      <stop offset="100%" stop-color="#0e1a28"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="720" rx="24" fill="url(#bg6)"/>
+  <!-- Top bar -->
+  <rect x="20" y="20" width="480" height="48" rx="12" fill="#0e1a28" opacity="0.9"/>
+  <circle cx="44" cy="44" r="8" fill="#06b6d4" opacity="0.3"/>
+  <text x="60" y="48" font-family="system-ui" font-size="11" fill="#22d3ee" font-weight="600">DesignKit</text>
+  <text x="140" y="48" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">v3.2.1</text>
+  <rect x="200" y="34" width="70" height="18" rx="5" fill="#06b6d4" opacity="0.15"/>
+  <text x="210" y="47" font-family="system-ui" font-size="9" fill="#06b6d4">Components</text>
+  <text x="290" y="47" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">Tokens</text>
+  <text x="340" y="47" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">Icons</text>
+  <text x="386" y="47" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">Docs</text>
+  <rect x="430" y="34" width="50" height="18" rx="5" fill="#06b6d4"/>
+  <text x="438" y="47" font-family="system-ui" font-size="9" fill="black" font-weight="600">8K ★</text>
+
+  <!-- Component showcase grid -->
+  <text x="36" y="94" font-family="system-ui" font-size="14" fill="white" font-weight="600">120+ Components</text>
+  <text x="36" y="112" font-family="system-ui" font-size="10" fill="#22d3ee" opacity="0.5">Accessible • Composable • Tree-shakeable</text>
+
+  <!-- Button component -->
+  <rect x="20" y="126" width="240" height="130" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <text x="36" y="150" font-family="system-ui" font-size="11" fill="white" font-weight="500">Button</text>
+  <rect x="170" y="138" width="76" height="16" rx="4" fill="#06b6d4" opacity="0.1"/>
+  <text x="178" y="150" font-family="system-ui" font-size="8" fill="#06b6d4">Interactive ↗</text>
+  <!-- Button variants -->
+  <rect x="36" y="164" width="70" height="28" rx="6" fill="#06b6d4"/>
+  <text x="50" y="182" font-family="system-ui" font-size="9" fill="white" font-weight="500">Primary</text>
+  <rect x="114" y="164" width="70" height="28" rx="6" fill="transparent" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="122" y="182" font-family="system-ui" font-size="9" fill="#06b6d4">Outline</text>
+  <rect x="192" y="164" width="54" height="28" rx="6" fill="#06b6d4" opacity="0.1"/>
+  <text x="204" y="182" font-family="system-ui" font-size="9" fill="#06b6d4">Ghost</text>
+  <!-- Sizes -->
+  <rect x="36" y="202" width="44" height="20" rx="4" fill="#06b6d4" opacity="0.6"/>
+  <text x="44" y="216" font-family="system-ui" font-size="7" fill="white">Small</text>
+  <rect x="88" y="198" width="56" height="26" rx="5" fill="#06b6d4" opacity="0.7"/>
+  <text x="100" y="216" font-family="system-ui" font-size="8" fill="white">Medium</text>
+  <rect x="152" y="194" width="64" height="32" rx="6" fill="#06b6d4" opacity="0.8"/>
+  <text x="166" y="216" font-family="system-ui" font-size="9" fill="white">Large</text>
+
+  <!-- Input component -->
+  <rect x="274" y="126" width="226" height="130" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <text x="290" y="150" font-family="system-ui" font-size="11" fill="white" font-weight="500">Input</text>
+  <!-- Input variants -->
+  <rect x="290" y="164" width="194" height="30" rx="6" fill="#0a1520" stroke="#06b6d440" stroke-width="1"/>
+  <text x="302" y="183" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">Enter your email...</text>
+  <rect x="290" y="202" width="194" height="30" rx="6" fill="#0a1520" stroke="#10b981" stroke-width="1.5"/>
+  <text x="302" y="221" font-family="system-ui" font-size="9" fill="white" opacity="0.7">vivek@example.com</text>
+  <text x="466" y="221" font-family="system-ui" font-size="9" fill="#10b981">✓</text>
+
+  <!-- Card component -->
+  <rect x="20" y="270" width="150" height="155" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <text x="36" y="294" font-family="system-ui" font-size="11" fill="white" font-weight="500">Card</text>
+  <rect x="32" y="306" width="126" height="80" rx="8" fill="#0a1520" stroke="#06b6d415"/>
+  <rect x="40" y="314" width="110" height="30" rx="4" fill="#06b6d4" opacity="0.08"/>
+  <rect x="40" y="352" width="80" height="5" rx="2" fill="#22d3ee" opacity="0.15"/>
+  <rect x="40" y="362" width="60" height="5" rx="2" fill="#22d3ee" opacity="0.1"/>
+  <rect x="40" y="376" width="40" height="14" rx="4" fill="#06b6d4" opacity="0.2"/>
+  <text x="48" y="386" font-family="system-ui" font-size="7" fill="#06b6d4">Action</text>
+  <text x="32" y="410" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">Elevated • Outlined</text>
+
+  <!-- Badge component -->
+  <rect x="184" y="270" width="150" height="155" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <text x="200" y="294" font-family="system-ui" font-size="11" fill="white" font-weight="500">Badge</text>
+  <!-- Badges -->
+  <rect x="200" y="310" width="50" height="20" rx="10" fill="#06b6d4" opacity="0.2"/>
+  <text x="212" y="324" font-family="system-ui" font-size="8" fill="#06b6d4">Default</text>
+  <rect x="258" y="310" width="58" height="20" rx="10" fill="#10b981" opacity="0.2"/>
+  <text x="268" y="324" font-family="system-ui" font-size="8" fill="#10b981">Success</text>
+  <rect x="200" y="338" width="56" height="20" rx="10" fill="#f59e0b" opacity="0.2"/>
+  <text x="210" y="352" font-family="system-ui" font-size="8" fill="#f59e0b">Warning</text>
+  <rect x="264" y="338" width="46" height="20" rx="10" fill="#ef4444" opacity="0.2"/>
+  <text x="274" y="352" font-family="system-ui" font-size="8" fill="#ef4444">Error</text>
+  <rect x="200" y="366" width="44" height="20" rx="10" fill="#818cf8" opacity="0.2"/>
+  <text x="210" y="380" font-family="system-ui" font-size="8" fill="#818cf8">Info</text>
+  <rect x="252" y="366" width="60" height="20" rx="10" fill="#ec4899" opacity="0.2"/>
+  <text x="262" y="380" font-family="system-ui" font-size="8" fill="#ec4899">Premium</text>
+  <text x="200" y="412" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">12 variants</text>
+
+  <!-- Dialog component -->
+  <rect x="348" y="270" width="152" height="155" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <text x="364" y="294" font-family="system-ui" font-size="11" fill="white" font-weight="500">Dialog</text>
+  <!-- Mini dialog preview -->
+  <rect x="360" y="306" width="128" height="90" rx="8" fill="#0a1520"/>
+  <rect x="368" y="314" width="112" height="12" rx="3" fill="#06b6d4" opacity="0.15"/>
+  <rect x="368" y="332" width="100" height="6" rx="2" fill="#22d3ee" opacity="0.1"/>
+  <rect x="368" y="342" width="80" height="6" rx="2" fill="#22d3ee" opacity="0.08"/>
+  <rect x="368" y="362" width="50" height="18" rx="4" fill="#06b6d4"/>
+  <text x="378" y="375" font-family="system-ui" font-size="7" fill="white">Confirm</text>
+  <rect x="424" y="362" width="46" height="18" rx="4" fill="transparent" stroke="#06b6d440"/>
+  <text x="434" y="375" font-family="system-ui" font-size="7" fill="#06b6d4">Cancel</text>
+  <text x="364" y="412" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">Accessible • Focus trap</text>
+
+  <!-- Storybook preview -->
+  <rect x="20" y="440" width="480" height="140" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <text x="36" y="468" font-family="system-ui" font-size="13" fill="white" font-weight="600">Storybook Preview</text>
+  <rect x="380" y="454" width="100" height="22" rx="6" fill="#06b6d4" opacity="0.15"/>
+  <text x="392" y="469" font-family="system-ui" font-size="9" fill="#06b6d4">Open Storybook ↗</text>
+  <!-- Component tree -->
+  <rect x="36" y="484" width="140" height="82" rx="8" fill="#0a1520"/>
+  <text x="48" y="502" font-family="system-ui" font-size="8" fill="#22d3ee" opacity="0.6">📦 Components</text>
+  <text x="56" y="516" font-family="system-ui" font-size="8" fill="#22d3ee" opacity="0.4">├ Button</text>
+  <text x="56" y="530" font-family="system-ui" font-size="8" fill="#06b6d4">├ Input ◄</text>
+  <text x="56" y="544" font-family="system-ui" font-size="8" fill="#22d3ee" opacity="0.4">├ Card</text>
+  <text x="56" y="558" font-family="system-ui" font-size="8" fill="#22d3ee" opacity="0.4">└ Dialog</text>
+  <!-- Preview pane -->
+  <rect x="190" y="484" width="296" height="82" rx="8" fill="#0a1520"/>
+  <text x="206" y="504" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.5">Input / Default</text>
+  <rect x="206" y="514" width="260" height="32" rx="6" fill="#0a1520" stroke="#06b6d440"/>
+  <text x="218" y="534" font-family="system-ui" font-size="9" fill="#22d3ee" opacity="0.4">Type something...</text>
+  <text x="206" y="560" font-family="system-ui" font-size="8" fill="#22d3ee" opacity="0.3">Props: variant="default" size="md" disabled={false}</text>
+
+  <!-- npm install -->
+  <rect x="20" y="594" width="480" height="50" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <rect x="36" y="606" width="450" height="26" rx="6" fill="#0a1520"/>
+  <text x="48" y="623" font-family="monospace" font-size="10" fill="#06b6d4" opacity="0.7">$ npm install @designkit/react</text>
+  <rect x="420" y="610" width="50" height="18" rx="4" fill="#06b6d4" opacity="0.15"/>
+  <text x="432" y="623" font-family="system-ui" font-size="8" fill="#06b6d4">Copy</text>
+
+  <!-- Stats row -->
+  <rect x="20" y="658" width="480" height="46" rx="14" fill="url(#card6)" stroke="#06b6d420" stroke-width="1"/>
+  <text x="50" y="686" font-family="system-ui" font-size="14" fill="white" font-weight="700">8K+</text>
+  <text x="50" y="698" font-family="system-ui" font-size="7" fill="#22d3ee" opacity="0.5">GitHub Stars</text>
+  <text x="140" y="686" font-family="system-ui" font-size="14" fill="white" font-weight="700">120+</text>
+  <text x="140" y="698" font-family="system-ui" font-size="7" fill="#22d3ee" opacity="0.5">Components</text>
+  <text x="240" y="686" font-family="system-ui" font-size="14" fill="white" font-weight="700">200+</text>
+  <text x="240" y="698" font-family="system-ui" font-size="7" fill="#22d3ee" opacity="0.5">Projects</text>
+  <text x="340" y="686" font-family="system-ui" font-size="14" fill="white" font-weight="700">100%</text>
+  <text x="340" y="698" font-family="system-ui" font-size="7" fill="#22d3ee" opacity="0.5">A11y Score</text>
+  <text x="440" y="686" font-family="system-ui" font-size="14" fill="white" font-weight="700">0kb</text>
+  <text x="440" y="698" font-family="system-ui" font-size="7" fill="#22d3ee" opacity="0.5">Unused CSS</text>
+</svg>

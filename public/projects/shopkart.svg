@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="720" viewBox="0 0 520 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0a1e"/>
+      <stop offset="100%" stop-color="#1a1030"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e1b2e"/>
+      <stop offset="100%" stop-color="#16132a"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="520" height="720" rx="24" fill="url(#bg)"/>
+  <!-- Top bar -->
+  <rect x="20" y="20" width="480" height="52" rx="12" fill="#1a1730" opacity="0.8"/>
+  <circle cx="44" cy="46" r="8" fill="#6366f1" opacity="0.3"/>
+  <rect x="60" y="38" width="80" height="16" rx="4" fill="#6366f1" opacity="0.2"/>
+  <rect x="340" y="38" width="60" height="16" rx="8" fill="#6366f1" opacity="0.15"/>
+  <rect x="410" y="38" width="60" height="16" rx="8" fill="#6366f1"/>
+  <text x="422" y="50" font-family="system-ui" font-size="11" fill="white" font-weight="600">Shop</text>
+  <!-- Stats Row -->
+  <rect x="20" y="86" width="150" height="80" rx="14" fill="url(#card)" stroke="#6366f120" stroke-width="1"/>
+  <text x="36" y="112" font-family="system-ui" font-size="11" fill="#a78bfa" opacity="0.7">Revenue</text>
+  <text x="36" y="138" font-family="system-ui" font-size="22" fill="white" font-weight="700">₹200Cr+</text>
+  <text x="36" y="155" font-family="system-ui" font-size="10" fill="#10b981">↑ 23.5%</text>
+
+  <rect x="185" y="86" width="150" height="80" rx="14" fill="url(#card)" stroke="#6366f120" stroke-width="1"/>
+  <text x="201" y="112" font-family="system-ui" font-size="11" fill="#a78bfa" opacity="0.7">Orders</text>
+  <text x="201" y="138" font-family="system-ui" font-size="22" fill="white" font-weight="700">48.2K</text>
+  <text x="201" y="155" font-family="system-ui" font-size="10" fill="#10b981">↑ 12.8%</text>
+
+  <rect x="350" y="86" width="150" height="80" rx="14" fill="url(#card)" stroke="#6366f120" stroke-width="1"/>
+  <text x="366" y="112" font-family="system-ui" font-size="11" fill="#a78bfa" opacity="0.7">Users</text>
+  <text x="366" y="138" font-family="system-ui" font-size="22" fill="white" font-weight="700">1.2M</text>
+  <text x="366" y="155" font-family="system-ui" font-size="10" fill="#10b981">↑ 8.3%</text>
+
+  <!-- Chart Area -->
+  <rect x="20" y="182" width="315" height="220" rx="14" fill="url(#card)" stroke="#6366f115" stroke-width="1"/>
+  <text x="36" y="210" font-family="system-ui" font-size="13" fill="white" font-weight="600">Sales Analytics</text>
+  <text x="250" y="210" font-family="system-ui" font-size="10" fill="#a78bfa" opacity="0.6">Last 7 days</text>
+  <!-- Chart bars -->
+  <rect x="46" y="310" width="28" height="70" rx="4" fill="#6366f1" opacity="0.3"/>
+  <rect x="86" y="280" width="28" height="100" rx="4" fill="#6366f1" opacity="0.4"/>
+  <rect x="126" y="260" width="28" height="120" rx="4" fill="#6366f1" opacity="0.5"/>
+  <rect x="166" y="240" width="28" height="140" rx="4" fill="#6366f1" opacity="0.6"/>
+  <rect x="206" y="255" width="28" height="125" rx="4" fill="#6366f1" opacity="0.7"/>
+  <rect x="246" y="230" width="28" height="150" rx="4" fill="url(#accent)"/>
+  <rect x="286" y="250" width="28" height="130" rx="4" fill="#6366f1" opacity="0.5"/>
+  <!-- Day labels -->
+  <text x="52" y="395" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.4">Mon</text>
+  <text x="92" y="395" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.4">Tue</text>
+  <text x="132" y="395" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.4">Wed</text>
+  <text x="172" y="395" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.4">Thu</text>
+  <text x="212" y="395" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.4">Fri</text>
+  <text x="252" y="395" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.4">Sat</text>
+  <text x="292" y="395" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.4">Sun</text>
+
+  <!-- Side panel - Products -->
+  <rect x="350" y="182" width="150" height="220" rx="14" fill="url(#card)" stroke="#6366f115" stroke-width="1"/>
+  <text x="366" y="210" font-family="system-ui" font-size="12" fill="white" font-weight="600">Top Products</text>
+  <!-- Product items -->
+  <rect x="362" y="224" width="126" height="36" rx="8" fill="#1a1730"/>
+  <circle cx="380" cy="242" r="10" fill="#6366f1" opacity="0.2"/>
+  <rect x="396" y="236" width="60" height="6" rx="2" fill="#a78bfa" opacity="0.3"/>
+  <text x="396" y="250" font-family="system-ui" font-size="8" fill="#6366f1">₹2.4K</text>
+
+  <rect x="362" y="266" width="126" height="36" rx="8" fill="#1a1730"/>
+  <circle cx="380" cy="284" r="10" fill="#818cf8" opacity="0.2"/>
+  <rect x="396" y="278" width="50" height="6" rx="2" fill="#a78bfa" opacity="0.3"/>
+  <text x="396" y="292" font-family="system-ui" font-size="8" fill="#6366f1">₹1.8K</text>
+
+  <rect x="362" y="308" width="126" height="36" rx="8" fill="#1a1730"/>
+  <circle cx="380" cy="326" r="10" fill="#a78bfa" opacity="0.2"/>
+  <rect x="396" y="320" width="45" height="6" rx="2" fill="#a78bfa" opacity="0.3"/>
+  <text x="396" y="334" font-family="system-ui" font-size="8" fill="#6366f1">₹1.2K</text>
+
+  <rect x="362" y="350" width="126" height="36" rx="8" fill="#1a1730"/>
+  <circle cx="380" cy="368" r="10" fill="#c4b5fd" opacity="0.2"/>
+  <rect x="396" y="362" width="40" height="6" rx="2" fill="#a78bfa" opacity="0.3"/>
+  <text x="396" y="376" font-family="system-ui" font-size="8" fill="#6366f1">₹980</text>
+
+  <!-- Product Grid -->
+  <rect x="20" y="416" width="238" height="140" rx="14" fill="url(#card)" stroke="#6366f115" stroke-width="1"/>
+  <text x="36" y="442" font-family="system-ui" font-size="12" fill="white" font-weight="600">Featured Items</text>
+  <rect x="36" y="456" width="90" height="82" rx="10" fill="#1a1730"/>
+  <rect x="46" y="466" width="70" height="50" rx="6" fill="#6366f1" opacity="0.1"/>
+  <text x="56" y="530" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.6">Headphones</text>
+  <rect x="142" y="456" width="90" height="82" rx="10" fill="#1a1730"/>
+  <rect x="152" y="466" width="70" height="50" rx="6" fill="#818cf8" opacity="0.1"/>
+  <text x="162" y="530" font-family="system-ui" font-size="9" fill="#a78bfa" opacity="0.6">Sneakers</text>
+
+  <rect x="272" y="416" width="228" height="140" rx="14" fill="url(#card)" stroke="#6366f115" stroke-width="1"/>
+  <text x="288" y="442" font-family="system-ui" font-size="12" fill="white" font-weight="600">Recent Orders</text>
+  <rect x="288" y="456" width="196" height="28" rx="6" fill="#1a1730"/>
+  <rect x="298" y="464" width="80" height="6" rx="2" fill="#a78bfa" opacity="0.3"/>
+  <rect x="440" y="462" width="34" height="14" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="444" y="473" font-family="system-ui" font-size="8" fill="#10b981">Paid</text>
+  <rect x="288" y="490" width="196" height="28" rx="6" fill="#1a1730"/>
+  <rect x="298" y="498" width="70" height="6" rx="2" fill="#a78bfa" opacity="0.3"/>
+  <rect x="440" y="496" width="34" height="14" rx="4" fill="#f59e0b" opacity="0.2"/>
+  <text x="441" y="507" font-family="system-ui" font-size="8" fill="#f59e0b">Ship</text>
+  <rect x="288" y="524" width="196" height="28" rx="6" fill="#1a1730"/>
+  <rect x="298" y="532" width="60" height="6" rx="2" fill="#a78bfa" opacity="0.3"/>
+  <rect x="440" y="530" width="34" height="14" rx="4" fill="#10b981" opacity="0.2"/>
+  <text x="444" y="541" font-family="system-ui" font-size="8" fill="#10b981">Paid</text>
+
+  <!-- Payment Gateway -->
+  <rect x="20" y="570" width="480" height="130" rx="14" fill="url(#card)" stroke="#6366f115" stroke-width="1"/>
+  <text x="36" y="598" font-family="system-ui" font-size="13" fill="white" font-weight="600">Payment Gateway</text>
+  <text x="380" y="598" font-family="system-ui" font-size="10" fill="#10b981">● Live</text>
+  <!-- Payment line chart -->
+  <polyline points="36,650 80,640 120,655 170,625 220,635 260,610 310,620 360,600 410,615 460,595 484,605" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="36,650 80,640 120,655 170,625 220,635 260,610 310,620 360,600 410,615 460,595 484,605 484,690 36,690" fill="url(#chart)" opacity="0.3"/>
+  <!-- Stripe/Razorpay badges -->
+  <rect x="36" y="668" width="70" height="22" rx="6" fill="#6366f1" opacity="0.15"/>
+  <text x="48" y="683" font-family="system-ui" font-size="9" fill="#a78bfa">Razorpay</text>
+  <rect x="116" y="668" width="54" height="22" rx="6" fill="#818cf8" opacity="0.15"/>
+  <text x="128" y="683" font-family="system-ui" font-size="9" fill="#a78bfa">Stripe</text>
+</svg>

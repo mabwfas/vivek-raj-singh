@@ -1,0 +1,587 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #030712;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444;
+  }
+  ::selection {
+    background: rgba(14, 165, 233, 0.3);
+    color: #fff;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* --- Glass Morphism --- */
+  .glass {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(14, 165, 233, 0.25);
+  }
+  .glass-raised {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  /* --- Gradient Text --- */
+  .gradient-text {
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 35%, #34d399 65%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-subtle {
+    background: linear-gradient(135deg, #94a3b8 0%, #e2e8f0 50%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* --- Background Patterns --- */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .dot-bg {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* --- Noise Texture Overlay --- */
+  /* [Fix #1] SVG data URI noise with CSS gradient fallback for browsers that
+     do not support inline SVG filters in data URIs (e.g. older Safari/Firefox). */
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Primary: SVG feTurbulence noise */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+  /* CSS-only noise fallback: layered semi-transparent gradients that simulate
+     grain when the SVG data URI fails to render. */
+  @supports not (background: url("data:image/svg+xml,%3Csvg%3E%3C/svg%3E")) {
+    .noise-overlay::before {
+      background-image:
+        repeating-radial-gradient(
+          circle at 17% 32%,
+          rgba(255, 255, 255, 0.015) 0px,
+          transparent 1px,
+          transparent 2px
+        ),
+        repeating-radial-gradient(
+          circle at 63% 71%,
+          rgba(255, 255, 255, 0.02) 0px,
+          transparent 1px,
+          transparent 3px
+        ),
+        repeating-radial-gradient(
+          circle at 41% 58%,
+          rgba(255, 255, 255, 0.012) 0px,
+          transparent 1px,
+          transparent 2px
+        );
+      background-size: 4px 4px, 5px 5px, 3px 3px;
+    }
+  }
+  /* Explicit fallback class: apply alongside .noise-overlay for guaranteed
+     grain rendering on any browser without SVG filter support. */
+  .noise-overlay-fallback::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-radial-gradient(
+        circle at 17% 32%,
+        rgba(255, 255, 255, 0.015) 0px,
+        transparent 1px,
+        transparent 2px
+      ),
+      repeating-radial-gradient(
+        circle at 63% 71%,
+        rgba(255, 255, 255, 0.02) 0px,
+        transparent 1px,
+        transparent 3px
+      ),
+      repeating-radial-gradient(
+        circle at 41% 58%,
+        rgba(255, 255, 255, 0.012) 0px,
+        transparent 1px,
+        transparent 2px
+      );
+    background-size: 4px 4px, 5px 5px, 3px 3px;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  /* --- Glow Effects --- */
+  .glow-brand {
+    box-shadow:
+      0 0 20px rgba(14, 165, 233, 0.15),
+      0 0 50px rgba(14, 165, 233, 0.08),
+      0 0 100px rgba(14, 165, 233, 0.03);
+  }
+  .glow-brand-strong {
+    box-shadow:
+      0 0 30px rgba(14, 165, 233, 0.25),
+      0 0 60px rgba(14, 165, 233, 0.12),
+      0 0 120px rgba(14, 165, 233, 0.05);
+  }
+
+  /* --- Section Headings --- */
+  .section-heading {
+    @apply text-[11px] uppercase tracking-[0.3em] text-zinc-500 font-mono mb-3;
+  }
+
+  /* --- 21st.dev Dark Grid Card with Corner Squares on Hover --- */
+  .dark-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* [Fix #2] The radial gradient uses CSS custom properties --mouse-x and
+     --mouse-y with 50% fallbacks so the glow centers in the card before any
+     mouse interaction. These fallbacks are valid CSS and render correctly
+     even when the JS mouse-tracker has not yet set the properties. */
+  .dark-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(14, 165, 233, 0.06),
+      transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+  }
+  .dark-card:hover::before {
+    opacity: 1;
+  }
+  .dark-card:hover {
+    border-color: rgba(14, 165, 233, 0.15);
+    background: rgba(255, 255, 255, 0.025);
+  }
+  /* Corner squares from 21st.dev Dark Grid pattern */
+  .corner-squares .sq {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+  }
+  .corner-squares:hover .sq {
+    border-color: rgba(14, 165, 233, 0.5);
+  }
+  .corner-squares .sq-tl { top: -3px; left: -3px; }
+  .corner-squares .sq-tr { top: -3px; right: -3px; }
+  .corner-squares .sq-bl { bottom: -3px; left: -3px; }
+  .corner-squares .sq-br { bottom: -3px; right: -3px; }
+
+  /* [Fix #4] Responsive corner squares: reduce from 6px to 4px on mobile */
+  @media (max-width: 639px) {
+    .corner-squares .sq {
+      width: 4px;
+      height: 4px;
+    }
+    .corner-squares .sq-tl { top: -2px; left: -2px; }
+    .corner-squares .sq-tr { top: -2px; right: -2px; }
+    .corner-squares .sq-bl { bottom: -2px; left: -2px; }
+    .corner-squares .sq-br { bottom: -2px; right: -2px; }
+  }
+
+  /* --- Animated Border Gradient (editorial detail) --- */
+  .border-gradient {
+    position: relative;
+  }
+  .border-gradient::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(14, 165, 233, 0.3) 25%,
+      rgba(6, 182, 212, 0.4) 50%,
+      rgba(236, 72, 153, 0.3) 75%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .border-gradient:hover::after {
+    opacity: 1;
+  }
+
+  /* --- Staggered reveal for lists --- */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: staggerReveal 0.5s ease forwards;
+  }
+
+  /* --- Shine sweep for buttons --- */
+  /* [Fix #7] Use isolation: isolate to create a new stacking context, and
+     set z-index: -1 on the ::after pseudo-element so the sweep renders
+     behind button text. Direct children get position: relative + z-index: 1
+     to guarantee they sit above the sweep layer. */
+  .shine-sweep {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .shine-sweep::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.06) 45%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.06) 55%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .shine-sweep:hover::after {
+    transform: translateX(100%);
+  }
+  .shine-sweep > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* --- Organic blob shape --- */
+  .blob {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blobMorph 8s ease-in-out infinite;
+  }
+
+  /* --- Text Shimmer (for hero accents) --- */
+  .text-shimmer {
+    background: linear-gradient(
+      110deg,
+      #0ea5e9 25%,
+      #06b6d4 37%,
+      #34d399 50%,
+      #06b6d4 63%,
+      #0ea5e9 75%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* --- Marquee for tech ticker --- */
+  /* [Fix #5] The track needs width: max-content so duplicated children sit
+     side-by-side in a single row and the translateX loop works seamlessly. */
+  .marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* --- Image mask for phone mockups --- */
+  .img-mask-phone {
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  }
+
+  /* --- 21st.dev: Aceternity-style Input Focus Glow --- */
+  .input-glow {
+    position: relative;
+  }
+  .input-glow::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0ea5e9, #06b6d4, #0ea5e9, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 0 0 8px 8px;
+  }
+  .input-glow:focus-within::after {
+    opacity: 1;
+  }
+
+  /* --- 21st.dev: Gradient Border Shimmer (buttons) --- */
+  .gradient-border-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .gradient-border-shimmer::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      var(--shimmer-angle, 0deg),
+      transparent 20%,
+      rgba(14, 165, 233, 0.5) 40%,
+      rgba(6, 182, 212, 0.6) 50%,
+      rgba(14, 165, 233, 0.5) 60%,
+      transparent 80%
+    );
+    animation: borderShimmer 3s linear infinite;
+    z-index: -1;
+  }
+
+  /* --- 21st.dev: Glassmorphism Card Hover Glow --- */
+  .glass-glow:hover {
+    box-shadow:
+      0 0 30px rgba(14, 165, 233, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* --- 21st.dev: Pulsing Scroll Capsule --- */
+  .scroll-capsule {
+    width: 24px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+  .scroll-capsule::after {
+    content: '';
+    width: 4px;
+    height: 8px;
+    background: rgba(14, 165, 233, 0.6);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollDot 2s ease-in-out infinite;
+  }
+
+  /* --- 21st.dev: Gauge Shine Sweep --- */
+  .gauge-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .gauge-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%) translateY(-100%);
+    transition: transform 0.8s ease;
+  }
+  .gauge-shine:hover::after {
+    transform: translateX(100%) translateY(100%);
+  }
+
+  /* --- 21st.dev: Animated Shiny Text (silver shimmer sweep) --- */
+  .animated-shiny-text {
+    background: linear-gradient(
+      110deg,
+      rgba(113,113,122,0.8) 20%,
+      rgba(228,228,231,0.95) 47%,
+      rgba(113,113,122,0.8) 55%,
+      rgba(113,113,122,0.8) 80%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shinyText 5s ease-in-out infinite;
+  }
+
+  /* --- 21st.dev: Staggered Fade-In-Up for scroll reveals --- */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    filter: blur(6px);
+    animation: fadeInUp 0.7s ease forwards;
+  }
+
+  /* --- 21st.dev: Card Tilt Glow on Hover --- */
+  .tilt-glow {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .tilt-glow:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(14, 165, 233, 0.06);
+  }
+
+  /* --- Mobile Font Size Overrides --- */
+  /* Bump tiny text sizes on small screens for readability */
+  @media (max-width: 639px) {
+    .section-heading {
+      font-size: 12px;
+    }
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* [Fix #3] Object-contain utility for phone mockup images */
+  .img-contain {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* [Fix #6] Phone screenshot aspect ratio utility (portrait 9:16) */
+  .aspect-phone {
+    aspect-ratio: 9 / 16;
+  }
+
+  /* [Fix #8] Dark background for image containers */
+  .bg-img-dark {
+    background: #080808;
+  }
+}
+
+/* --- Keyframe Animations --- */
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes blobMorph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 50% 50% 40% 60% / 40% 50% 60% 50%; }
+  75% { border-radius: 40% 60% 50% 50% / 60% 40% 50% 60%; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes staggerReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(var(--orbit-radius, 120px)) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(var(--orbit-radius, 120px)) rotate(-360deg); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes borderShimmer {
+  0% { --shimmer-angle: 0deg; transform: rotate(0deg); }
+  100% { --shimmer-angle: 360deg; transform: rotate(360deg); }
+}
+
+@keyframes scrollDot {
+  0%, 100% { opacity: 0.6; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(12px); }
+}
+
+@keyframes blurIn {
+  0% { opacity: 0; filter: blur(12px); transform: translateY(20px); }
+  100% { opacity: 1; filter: blur(0px); transform: translateY(0); }
+}
+
+/* 21st.dev: Animated Shiny Text keyframe */
+@keyframes shinyText {
+  0% { background-position: 100% center; }
+  100% { background-position: -100% center; }
+}
+
+/* 21st.dev: Fade-In-Up with blur */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(24px) scale(0.97); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
+}

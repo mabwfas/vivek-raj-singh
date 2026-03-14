@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreyansh Singh — CV</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.6;-webkit-font-smoothing:antialiased}
+.cv-page{display:grid;grid-template-columns:260px 1fr;max-width:1000px;margin:24px auto;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.12);border-radius:8px;overflow:hidden;min-height:100vh}
+@media print{
+@page{size:A4;margin:6mm 0 6mm 0}
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+body{background:#fff;margin:0;padding:0;font-size:9px}
+.cv-page{margin:0;box-shadow:none;border-radius:0;min-height:auto;max-width:100%;display:grid!important;grid-template-columns:190px 1fr!important;overflow:visible}
+.cv-toolbar{display:none!important}
+/* ── Sidebar (ultra-compact) ── */
+.cv-sidebar{background:linear-gradient(180deg,#0f1629 0%,#162040 100%)!important;padding:10px 10px 8px;font-size:9px;line-height:1.35}
+.cv-sidebar h2{margin:8px 0 4px;font-size:8.5px;letter-spacing:1.5px;padding-bottom:3px}
+.cv-sidebar h2:first-of-type{margin-top:8px}
+.cv-avatar{width:52px;height:52px;font-size:20px;margin-bottom:8px}
+.cv-sidebar img{width:52px!important;height:52px!important;margin-bottom:8px!important}
+.cv-contact li{font-size:8px;margin:2px 0;gap:4px}
+.cv-contact svg{width:10px;height:10px}
+.cv-sb-item{margin:2px 0}
+.cv-sb-lbl{font-size:8px;margin-bottom:1px}
+.cv-sb-lbl span{font-size:8px}
+.cv-sb-track{height:3px}
+.cv-tag{font-size:7px;padding:0px 4px;border-radius:2px}
+.cv-tag-group{margin:3px 0}
+.cv-tag-group h3{font-size:7px;margin-bottom:2px;letter-spacing:1px}
+.cv-tags{gap:2px}
+.cv-lang-item{font-size:8px;margin:1px 0}
+.cv-cert{font-size:8px;margin:2px 0;line-height:1.3}
+.cv-cert-year{font-size:7px}
+.cv-gallery{grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3px}
+.cv-gallery-item{padding:3px 2px;border-radius:3px}
+.cv-gallery-item span{font-size:13px!important}
+.cv-gallery-label{font-size:6.5px}
+/* ── Main content (ultra-compact) ── */
+.cv-main{padding:10px 14px 8px}
+.cv-header h1{font-size:18px;line-height:1.1}
+.cv-title{font-size:10px;margin:1px 0 4px}
+.cv-summary{font-size:8.5px;line-height:1.4;margin-bottom:6px}
+.cv-metrics{gap:4px;margin:6px 0 8px}
+.cv-metric{padding:4px 2px;border-radius:4px}
+.cv-metric-val{font-size:14px}
+.cv-metric-lbl{font-size:6.5px;letter-spacing:1px}
+.cv-section{margin:6px 0;break-inside:avoid}
+.cv-section-title{font-size:9px;border-left-width:2px;border-left-color:#4f6ef7!important;margin-bottom:4px;padding-left:6px;letter-spacing:1.5px}
+/* Why hire */
+.cv-why{gap:4px;margin-bottom:4px}
+.cv-why-item{padding:4px 4px;break-inside:avoid;border-radius:4px}
+.cv-why-icon{font-size:13px;margin-bottom:1px}
+.cv-why-title{font-size:8px}
+.cv-why-desc{font-size:7px;line-height:1.3}
+/* Experience */
+.cv-exp{margin:4px 0;padding-left:8px;break-inside:avoid;border-left-width:1px}
+.cv-exp::before{left:-3px;top:4px;width:5px;height:5px}
+.cv-exp-role{font-size:9.5px}
+.cv-exp-date{font-size:8px}
+.cv-exp-company{font-size:8.5px;margin:0 0 2px}
+.cv-exp-list{font-size:8px;padding-left:12px;margin:0}
+.cv-exp-list li{margin:1px 0;line-height:1.3}
+/* Projects */
+.cv-project{margin:3px 0;padding:5px 7px;break-inside:avoid;border-radius:4px}
+.cv-proj-name{font-size:9px}
+.cv-proj-tech{font-size:7.5px;margin:1px 0 2px}
+.cv-proj-desc{font-size:7.5px;line-height:1.35}
+.cv-project div[style]{font-size:7.5px!important;margin-bottom:1px!important}
+/* Methodology */
+.cv-method-step{font-size:8px;padding:2px 6px;break-inside:avoid;border-left-width:2px}
+.cv-methodology{gap:2px}
+/* Publications */
+.cv-pub-item{margin:2px 0}
+.cv-pub-title{font-size:8.5px}
+.cv-pub-venue{font-size:7.5px}
+/* Platforms */
+.cv-platform-tag{font-size:7.5px;padding:1px 6px}
+.cv-platforms{gap:4px;margin:2px 0}
+/* Education */
+.cv-edu{margin:3px 0;gap:6px}
+.cv-edu-deg{font-size:9px}
+.cv-edu-school{font-size:8px}
+.cv-edu-detail{font-size:7.5px}
+.cv-edu-year{font-size:7.5px;padding:1px 5px}
+/* Awards */
+.cv-awards-grid{gap:4px}
+.cv-award{padding:3px 5px;break-inside:avoid;border-radius:4px}
+.cv-award strong{font-size:8px;margin-bottom:0}
+.cv-award span{font-size:7px;line-height:1.3}
+/* Testimonials — show only 2 in print */
+.cv-testimonials{gap:4px}
+.cv-testimonial{padding:4px 6px;break-inside:avoid;border-left-width:2px;border-radius:0 4px 4px 0}
+.cv-testimonial:nth-child(n+3){display:none}
+.cv-testimonial-text{font-size:8px;line-height:1.35}
+.cv-testimonial-author{font-size:7px;margin-top:2px}
+}
+@media(max-width:768px){.cv-page{grid-template-columns:1fr;max-width:100%;margin:0;border-radius:0}}
+
+/* Sidebar */
+.cv-sidebar{background:linear-gradient(180deg,#0f1629 0%,#162040 100%);color:#c8cfe0;padding:28px 20px;font-size:13px}
+.cv-sidebar h2{color:#fff;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.08)}
+.cv-sidebar h2:first-of-type{margin-top:18px}
+.cv-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#4f6ef7,#6c8cff);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#fff;margin:0 auto 16px;border:3px solid rgba(255,255,255,.15)}
+
+/* Contact */
+.cv-contact{list-style:none}
+.cv-contact li{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px;word-break:break-all}
+.cv-contact svg{width:14px;height:14px;fill:#6c8cff;flex-shrink:0}
+
+/* Skill bars */
+.cv-sb-item{margin:6px 0}
+.cv-sb-lbl{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;color:#d0d6e4}
+.cv-sb-track{height:5px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.cv-sb-fill{height:100%;background:linear-gradient(90deg,#4f6ef7,#6c8cff);border-radius:4px;transition:width 1.5s ease}
+
+/* Tags */
+.cv-tag-group{margin:8px 0}
+.cv-tag-group h3{font-size:10px;color:#8892a8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px}
+.cv-tags{display:flex;flex-wrap:wrap;gap:4px}
+.cv-tag{background:rgba(79,110,247,.12);color:#8badff;border:1px solid rgba(79,110,247,.2);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500}
+
+/* Languages */
+.cv-lang-item{display:flex;justify-content:space-between;font-size:12px;margin:4px 0}
+.cv-lang-item span:last-child{color:#6c8cff;font-weight:600;font-size:11px}
+
+/* Certifications */
+.cv-cert{margin:6px 0;font-size:11px;color:#d0d6e4}
+.cv-cert-year{font-size:10px;color:#6b7794}
+
+/* Portfolio gallery */
+.cv-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.cv-gallery-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:8px 4px;text-align:center}
+.cv-gallery-label{font-size:9px;color:#8892a8;margin-top:3px}
+
+/* Main content */
+.cv-main{padding:32px 36px}
+.cv-header h1{font-size:30px;font-weight:800;color:#0f1629;letter-spacing:-.5px;line-height:1.2}
+.cv-title{color:#4f6ef7;font-size:15px;font-weight:600;margin:4px 0 10px}
+.cv-summary{font-size:13px;color:#4a5068;line-height:1.7;margin-bottom:16px}
+
+/* Metrics */
+.cv-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 20px}
+.cv-metric{text-align:center;padding:10px 8px;border:1px solid #e8ecf2;border-radius:8px;background:#fafbfd}
+.cv-metric-val{font-size:22px;font-weight:800;color:#0f1629}
+.cv-metric-lbl{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#7a8299;margin-top:2px}
+
+/* Sections */
+.cv-section{margin:20px 0}
+.cv-section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#0f1629;border-left:3px solid #4f6ef7;padding-left:10px;margin-bottom:12px}
+
+/* Why hire */
+.cv-why{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px}
+.cv-why-item{text-align:center;padding:12px 8px;border:1px solid #e8ecf2;border-radius:8px;background:#fafbfd}
+.cv-why-icon{font-size:22px;margin-bottom:4px}
+.cv-why-title{font-size:11px;font-weight:700;color:#0f1629}
+.cv-why-desc{font-size:10px;color:#7a8299;margin-top:2px}
+
+/* Experience */
+.cv-exp{margin:14px 0;padding-left:14px;border-left:2px solid #e0e4ec;position:relative}
+.cv-exp::before{content:'';position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:#4f6ef7;border:2px solid #fff}
+.cv-exp-hdr{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px}
+.cv-exp-role{font-size:14px;font-weight:700;color:#0f1629}
+.cv-exp-date{font-size:11px;color:#7a8299;font-weight:500;white-space:nowrap}
+.cv-exp-company{font-size:12px;color:#4f6ef7;margin:2px 0 6px;font-weight:500}
+.cv-exp-list{margin:0;padding-left:16px;font-size:12px;color:#4a5068}
+.cv-exp-list li{margin:3px 0;line-height:1.55}
+
+/* Projects */
+.cv-project{margin:10px 0;padding:10px 14px;border:1px solid #e8ecf2;border-radius:8px;background:#fafbfd}
+.cv-proj-name{font-size:13px;font-weight:700;color:#0f1629}
+.cv-proj-tech{font-size:11px;color:#4f6ef7;margin:2px 0 4px}
+.cv-proj-desc{font-size:11px;color:#5a6178;line-height:1.55}
+
+/* Methodology */
+.cv-methodology{display:flex;flex-direction:column;gap:6px}
+.cv-method-step{font-size:12px;color:#4a5068;padding:6px 10px;border-left:3px solid #4f6ef7;background:#fafbfd;border-radius:0 6px 6px 0}
+
+/* Publications */
+.cv-pub-item{margin:6px 0}
+.cv-pub-title{font-size:12px;font-weight:600;color:#0f1629}
+.cv-pub-venue{font-size:11px;color:#7a8299}
+
+/* Platforms */
+.cv-platforms{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0}
+.cv-platform-tag{font-size:11px;padding:4px 12px;border:1px solid #4f6ef7;border-radius:20px;color:#4f6ef7;font-weight:600}
+
+/* Education */
+.cv-edu{display:flex;justify-content:space-between;align-items:flex-start;margin:8px 0;gap:10px}
+.cv-edu-deg{font-size:13px;font-weight:700;color:#0f1629}
+.cv-edu-school{font-size:12px;color:#4f6ef7}
+.cv-edu-detail{font-size:11px;color:#7a8299}
+.cv-edu-year{font-size:11px;color:#7a8299;background:#f0f2f5;padding:2px 8px;border-radius:4px;white-space:nowrap;font-weight:600}
+
+/* Awards */
+.cv-awards-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cv-award{padding:8px 10px;border:1px solid #e8ecf2;border-radius:6px;font-size:11px}
+.cv-award strong{display:block;color:#0f1629;font-size:12px;margin-bottom:2px}
+.cv-award span{color:#7a8299;font-size:10px}
+
+/* Testimonials */
+.cv-testimonials{display:flex;flex-direction:column;gap:10px}
+.cv-testimonial{padding:12px 14px;border-left:3px solid #4f6ef7;background:#fafbfd;border-radius:0 8px 8px 0}
+.cv-testimonial-text{font-size:12px;font-style:italic;color:#4a5068;line-height:1.6}
+.cv-testimonial-author{font-size:11px;color:#7a8299;margin-top:6px;font-weight:500}
+
+/* Toolbar */
+.cv-toolbar{position:fixed;top:16px;right:16px;display:flex;gap:8px;z-index:100}
+.cv-toolbar a,.cv-toolbar button{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all .2s}
+.btn-back{background:#0f1629;color:#fff}
+.btn-back:hover{background:#1a2340}
+.btn-print{background:#4f6ef7;color:#fff}
+.btn-print:hover{background:#3d5ce5}
+
+</style>
+</head>
+<body>
+
+<div class="cv-toolbar">
+  <a href="/" class="btn-back">&#8592; Portfolio</a>
+  <button class="btn-print" onclick="window.print()">&#128438; Print / PDF</button>
+</div>
+
+<div class="cv-page">
+  <aside class="cv-sidebar">
+    <img src="/shreyansh.jpg" alt="Shreyansh Singh" style="width:90px;height:90px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block;border:3px solid rgba(255,255,255,.15)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="cv-avatar" style="display:none">SS</div>
+
+    <h2>Contact</h2>
+    <ul class="cv-contact">
+      <li><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span>realshreyanshsingh@gmail.com</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.58.11.33.03.72-.24 1.01l-2.2 2.2z"/></svg><span>+91 88277 41992</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg><span>Lucknow, UP, India</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg><span>linkedin.com/in/realshreyanshsingh</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>shreyansh-singh-dev.vercel.app</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg><span>github.com/mabwfas</span></li>
+    </ul>
+
+    <h2>Core Expertise</h2>
+    <ul class="cv-skill-bar" style="list-style:none">
+      <li class="cv-sb-item"><div class="cv-sb-lbl"><span>Flutter / Dart</span><span>98%</span></div><div class="cv-sb-track"><div class="cv-sb-fill" style="width:98%"></div></div></li>
+      <li class="cv-sb-item"><div class="cv-sb-lbl"><span>React Native / JS</span><span>97%</span></div><div class="cv-sb-track"><div class="cv-sb-fill" style="width:97%"></div></div></li>
+      <li class="cv-sb-item"><div class="cv-sb-lbl"><span>Swift / SwiftUI</span><span>96%</span></div><div class="cv-sb-track"><div class="cv-sb-fill" style="width:96%"></div></div></li>
+      <li class="cv-sb-item"><div class="cv-sb-lbl"><span>Kotlin / Jetpack</span><span>95%</span></div><div class="cv-sb-track"><div class="cv-sb-fill" style="width:95%"></div></div></li>
+      <li class="cv-sb-item"><div class="cv-sb-lbl"><span>Firebase / Supabase</span><span>94%</span></div><div class="cv-sb-track"><div class="cv-sb-fill" style="width:94%"></div></div></li>
+      <li class="cv-sb-item"><div class="cv-sb-lbl"><span>App Architecture</span><span>97%</span></div><div class="cv-sb-track"><div class="cv-sb-fill" style="width:97%"></div></div></li>
+    </ul>
+
+    <h2>Tech Stack</h2>
+    <div class="cv-tag-group"><h3>Mobile</h3><div class="cv-tags"><span class="cv-tag">Flutter</span><span class="cv-tag">React Native</span><span class="cv-tag">Swift</span><span class="cv-tag">Kotlin</span><span class="cv-tag">SwiftUI</span><span class="cv-tag">Jetpack Compose</span></div></div>
+    <div class="cv-tag-group"><h3>Backend &amp; Cloud</h3><div class="cv-tags"><span class="cv-tag">Firebase</span><span class="cv-tag">Node.js</span><span class="cv-tag">Supabase</span><span class="cv-tag">AWS Amplify</span><span class="cv-tag">GraphQL</span><span class="cv-tag">REST</span></div></div>
+    <div class="cv-tag-group"><h3>Tools &amp; CI/CD</h3><div class="cv-tags"><span class="cv-tag">Fastlane</span><span class="cv-tag">Codemagic</span><span class="cv-tag">Figma</span><span class="cv-tag">TestFlight</span><span class="cv-tag">Crashlytics</span><span class="cv-tag">RevenueCat</span></div></div>
+
+    <h2>Languages</h2>
+    <div class="cv-lang-item"><span>English</span><span>Fluent</span></div>
+    <div class="cv-lang-item"><span>Hindi</span><span>Native</span></div>
+
+    <h2>Certifications</h2>
+    <div class="cv-cert">Google Associate Android Developer<br><span class="cv-cert-year">Google &mdash; 2023</span></div>
+    <div class="cv-cert">AWS Certified Solutions Architect &mdash; Associate<br><span class="cv-cert-year">Amazon Web Services &mdash; 2022</span></div>
+    <div class="cv-cert">Meta React Native Specialization<br><span class="cv-cert-year">Meta (Coursera) &mdash; 2021</span></div>
+    <div class="cv-cert">Apple Certified iOS Developer<br><span class="cv-cert-year">Apple &mdash; 2020</span></div>
+
+    <h2>Portfolio</h2>
+    <div class="cv-gallery">
+      <div class="cv-gallery-item"><span style="font-size:24px">💰</span><div class="cv-gallery-label">NidhiPay</div></div>
+      <div class="cv-gallery-item"><span style="font-size:24px">🏋️</span><div class="cv-gallery-label">VitalSync</div></div>
+      <div class="cv-gallery-item"><span style="font-size:24px">📺</span><div class="cv-gallery-label">LiveKart</div></div>
+      <div class="cv-gallery-item"><span style="font-size:24px">👗</span><div class="cv-gallery-label">StyleBazaar</div></div>
+      <div class="cv-gallery-item"><span style="font-size:24px">🍱</span><div class="cv-gallery-label">DabbaRun</div></div>
+    </div>
+  </aside>
+
+  <main class="cv-main">
+    <header class="cv-header">
+      <h1>Shreyansh Singh</h1>
+      <div class="cv-title">Senior Mobile App Developer &amp; Cross-Platform Architect</div>
+      <p class="cv-summary">Elite mobile developer with 5+ years building high-performance iOS, Android, and cross-platform applications for India's top tech companies and global startups. Expert in Flutter, React Native, Swift, and Kotlin with 90+ apps shipped collectively serving 50M+ users. Built payment, e-commerce, and fintech apps processing &#8377;15,000 Cr+ in transactions.</p>
+    </header>
+
+    <div class="cv-metrics">
+      <div class="cv-metric"><div class="cv-metric-val">5+</div><div class="cv-metric-lbl">Years Exp.</div></div>
+      <div class="cv-metric"><div class="cv-metric-val">90+</div><div class="cv-metric-lbl">Apps Shipped</div></div>
+      <div class="cv-metric"><div class="cv-metric-val">50M+</div><div class="cv-metric-lbl">Users</div></div>
+      <div class="cv-metric"><div class="cv-metric-val">100%</div><div class="cv-metric-lbl">5-Star Rating</div></div>
+    </div>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Why Hire Me</h2>
+      <div class="cv-why">
+        <div class="cv-why-item"><div class="cv-why-icon">📱</div><div class="cv-why-title">90+ Apps Shipped</div><div class="cv-why-desc">App Store + Play Store across fintech, e-commerce, health &amp; social</div></div>
+        <div class="cv-why-item"><div class="cv-why-icon">⭐</div><div class="cv-why-title">100% 5-Star Rating</div><div class="cv-why-desc">Every single client rated 5 stars with glowing reviews</div></div>
+        <div class="cv-why-item"><div class="cv-why-icon">🚀</div><div class="cv-why-title">50M+ Users Served</div><div class="cv-why-desc">Apps built for India's scale &mdash; Tier 1, 2 &amp; 3 city optimization</div></div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Professional Experience</h2>
+
+      <div class="cv-exp">
+        <div class="cv-exp-hdr"><span class="cv-exp-role">Freelance Mobile App Developer &amp; Architect</span><span class="cv-exp-date">Jan 2024 &mdash; Present</span></div>
+        <div class="cv-exp-company">Self-Employed (Freelance / Contract) &mdash; Remote, India</div>
+        <ul class="cv-exp-list">
+          <li>Deliver end-to-end mobile development for 12+ clients across fintech, health, and e-commerce verticals</li>
+          <li>Architected and shipped 8 production apps with Flutter and React Native for iOS &amp; Android</li>
+          <li>Built cross-platform SDKs adopted by 3 enterprise clients for payment integration</li>
+          <li>Provide mobile architecture consulting for startup engineering teams of 5-15 engineers</li>
+        </ul>
+      </div>
+
+      <div class="cv-exp">
+        <div class="cv-exp-hdr"><span class="cv-exp-role">Lead Mobile App Developer</span><span class="cv-exp-date">Apr 2022 &mdash; Dec 2023</span></div>
+        <div class="cv-exp-company">Flipkart (Walmart Inc.) &mdash; Bengaluru, India</div>
+        <ul class="cv-exp-list">
+          <li>Led the mobile checkout redesign increasing conversion rate by 18% across Flipkart's 200M+ user base</li>
+          <li>Architected offline-first cart sync engine reducing order failures by 35% in low-connectivity zones</li>
+          <li>Built Flutter-based seller app used by 500K+ merchants for real-time inventory management</li>
+          <li>Mentored team of 6 mobile developers and established code review standards across mobile org</li>
+        </ul>
+      </div>
+
+      <div class="cv-exp">
+        <div class="cv-exp-hdr"><span class="cv-exp-role">Senior Mobile App Developer</span><span class="cv-exp-date">Sep 2020 &mdash; Mar 2022</span></div>
+        <div class="cv-exp-company">Razorpay &mdash; Bengaluru, India</div>
+        <ul class="cv-exp-list">
+          <li>Implemented UPI deep-link integration, biometric auth, and real-time settlement tracking</li>
+          <li>Reduced app ANR rate by 76% through systematic memory leak detection</li>
+          <li>Led mobile SDK development powering payment flows in 50,000+ partner apps</li>
+          <li>Built React Native merchant dashboard app with real-time transaction analytics</li>
+        </ul>
+      </div>
+
+      <div class="cv-exp">
+        <div class="cv-exp-hdr"><span class="cv-exp-role">Junior Mobile App Developer</span><span class="cv-exp-date">Aug 2019 &mdash; Aug 2020</span></div>
+        <div class="cv-exp-company">Paytm (One97 Communications) &mdash; Noida, India</div>
+        <ul class="cv-exp-list">
+          <li>Core team member during Paytm's hypergrowth phase &mdash; built features serving 100M+ users</li>
+          <li>Developed QR code scanner and merchant payment flow processing 5M+ daily UPI transactions</li>
+          <li>Built the Paytm Postpaid module generating &#8377;200 Cr+ in monthly disbursals</li>
+          <li>Optimized app for 2G/3G networks and low-RAM devices (1GB)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Featured Projects by Shreyansh Singh</h2>
+      <div class="cv-project">
+        <div class="cv-proj-name">NidhiPay &mdash; AI-Powered UPI &amp; Banking App</div>
+        <div class="cv-proj-tech">Flutter, Dart, Firebase, Razorpay SDK, ML Kit | 628K+ Downloads</div>
+        <div style="font-size:11px;color:#4f6ef7;font-weight:600;margin-bottom:3px">Sole Developer &amp; Architect &mdash; Built for KisanCredit (YC W23)</div>
+        <div class="cv-proj-desc">Full-featured fintech super-app with UPI payments, AI expense categorization, and biometric security. Handles &#8377;800 Cr+ monthly transaction volume with 99.97% uptime. Rated 4.9 stars on Google Play.</div>
+      </div>
+      <div class="cv-project">
+        <div class="cv-proj-name">VitalSync &mdash; Cross-Platform Health &amp; Fitness Tracker</div>
+        <div class="cv-proj-tech">React Native, HealthKit, Google Fit, Node.js | 1.52M+ Active Users</div>
+        <div style="font-size:11px;color:#4f6ef7;font-weight:600;margin-bottom:3px">Lead React Native Developer &mdash; Built for HealthifyMe</div>
+        <div class="cv-proj-desc">Comprehensive health platform syncing with Apple HealthKit, Google Fit, and 15+ wearables. Features AI workout recommendations, meal planning, and sleep analysis with 60fps animations.</div>
+      </div>
+      <div class="cv-project">
+        <div class="cv-proj-name">LiveKart &mdash; Live Commerce &amp; Video Shopping Platform</div>
+        <div class="cv-proj-tech">Flutter, WebRTC, Agora SDK, Firebase, Stripe | &#8377;50 Cr+ GMV</div>
+        <div style="font-size:11px;color:#4f6ef7;font-weight:600;margin-bottom:3px">Lead Flutter Developer &mdash; Built for Meesho</div>
+        <div class="cv-proj-desc">Live commerce platform with low-latency streaming (&lt;300ms), in-stream checkout, and AI product recognition. Handles 50K+ concurrent viewers per stream.</div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Methodology</h2>
+      <div class="cv-methodology">
+        <div class="cv-method-step"><strong>Discovery:</strong> User research, competitive analysis, and UX wireframing</div>
+        <div class="cv-method-step"><strong>Build:</strong> Cross-platform development with CI/CD and automated testing</div>
+        <div class="cv-method-step"><strong>Launch:</strong> App store optimization, staged rollout, and post-launch monitoring</div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Publications &amp; Speaking</h2>
+      <div class="cv-pub-item"><div class="cv-pub-title">Offline-First Mobile Apps for Emerging Markets</div><div class="cv-pub-venue">React Native EU Conference 2023 &mdash; Wroclaw</div></div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Verified Platforms</h2>
+      <div class="cv-platforms">
+        <span class="cv-platform-tag">&#10003; Toptal Top 3%</span>
+        <span class="cv-platform-tag">&#10003; Upwork Expert-Vetted</span>
+        <span class="cv-platform-tag">&#10003; LinkedIn ProFinder</span>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Education</h2>
+      <div class="cv-edu">
+        <div>
+          <div class="cv-edu-deg">B.Tech Computer Science &amp; Engineering</div>
+          <div class="cv-edu-school">Jaypee University of Engineering and Technology (JUET), Guna</div>
+          <div class="cv-edu-detail">Smart India Hackathon Winner | Google Summer of Code (2x) | CGPA: 9.2/10</div>
+        </div>
+        <span class="cv-edu-year">2019</span>
+      </div>
+      <div class="cv-edu">
+        <div>
+          <div class="cv-edu-deg">Senior Secondary (XII) &mdash; Science</div>
+          <div class="cv-edu-school">City Montessori School (CMS), Lucknow</div>
+          <div class="cv-edu-detail">ICSE Board | Physics, Chemistry, Mathematics &amp; Computer Science</div>
+        </div>
+        <span class="cv-edu-year">2015</span>
+      </div>
+      <div class="cv-edu">
+        <div>
+          <div class="cv-edu-deg">Secondary (X)</div>
+          <div class="cv-edu-school">City Montessori School (CMS), Lucknow</div>
+          <div class="cv-edu-detail">ICSE Board | School topper in Computer Science</div>
+        </div>
+        <span class="cv-edu-year">2013</span>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Awards &amp; Recognition</h2>
+      <div class="cv-awards-grid">
+        <div class="cv-award"><strong>Google Play App of the Day</strong><span>NidhiPay featured by Google Play India for 3 consecutive weeks (2024)</span></div>
+        <div class="cv-award"><strong>Flipkart Tech Excellence Award</strong><span>For mobile checkout redesign increasing conversion by 18%</span></div>
+        <div class="cv-award"><strong>Smart India Hackathon Winner</strong><span>Built accessible healthcare app for rural India &mdash; national finalist (2018)</span></div>
+        <div class="cv-award"><strong>React Native EU Speaker</strong><span>"Offline-First Architecture for Emerging Markets" &mdash; Wroclaw (2023)</span></div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Fiverr Client Reviews</h2>
+      <div class="cv-testimonials">
+        <div class="cv-testimonial">
+          <div class="cv-testimonial-text">"Shreyansh and the DMH team did an outstanding job setting up my Shopify store! Communication was great throughout the entire process."</div>
+          <div class="cv-testimonial-author">&mdash; simonejenkin200, Fiverr Client &middot; United States</div>
+        </div>
+        <div class="cv-testimonial">
+          <div class="cv-testimonial-text">"Very professional and gives attention to details. The final work exceeded my expectations!"</div>
+          <div class="cv-testimonial-author">&mdash; kidboss, Fiverr Client &middot; United States</div>
+        </div>
+        <div class="cv-testimonial">
+          <div class="cv-testimonial-text">"I had a great experience working with Shreyansh on the development and restructuring of my store. Would definitely recommend!"</div>
+          <div class="cv-testimonial-author">&mdash; ydeko4471, Fiverr Client &middot; Bulgaria</div>
+        </div>
+        <div class="cv-testimonial">
+          <div class="cv-testimonial-text">"Built out everything we were looking to accomplish. Great communication and delivered on time!"</div>
+          <div class="cv-testimonial-author">&mdash; ginok708, Fiverr Client &middot; United States</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

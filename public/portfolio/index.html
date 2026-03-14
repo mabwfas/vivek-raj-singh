@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Shreyansh Singh | Mobile App & Shopify Developer</title>
+  <meta name="description" content="Senior mobile app & Shopify developer. 90+ projects shipped, 50M+ users, 100% 5-star reviews. Flutter, React Native, Shopify, Swift, Kotlin." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #050505; --surface: #0a0a0a; --surface-2: #0e0e0e;
+      --border: rgba(255,255,255,0.06); --border-hover: rgba(99,102,241,0.3);
+      --brand: #6366f1; --brand-light: #818cf8; --brand-dim: rgba(99,102,241,0.1);
+      --green: #10b981; --amber: #f59e0b; --pink: #ec4899; --purple: #8b5cf6; --red: #ef4444;
+      --text: #e4e4e7; --muted: #a1a1aa; --dim: #71717a; --dimmer: #52525b;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--brand-light); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #fff; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(20px) saturate(180%); background: rgba(5,5,5,0.8); border-bottom: 1px solid var(--border); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .logo { font-weight: 800; font-size: 18px; color: #fff; letter-spacing: -0.02em; }
+    .logo span { color: var(--brand); }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { color: var(--dim); font-size: 13px; font-weight: 500; }
+    .nav-links a:hover { color: #fff; }
+    .btn-primary { background: var(--brand); color: #fff !important; padding: 8px 20px; border-radius: 9999px; font-size: 13px; font-weight: 600; transition: all 0.2s; display: inline-block; }
+    .btn-primary:hover { background: var(--brand-light); transform: translateY(-1px); }
+
+    /* Hero */
+    .hero { padding: 100px 0 70px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--brand-dim); border: 1px solid rgba(99,102,241,0.15); border-radius: 9999px; padding: 6px 16px; font-size: 11px; font-weight: 600; color: var(--brand-light); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 24px; }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 16px; }
+    .hero h1 .gradient { background: linear-gradient(135deg, var(--brand), #a855f7, var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--muted); max-width: 660px; margin: 0 auto; font-size: 15px; line-height: 1.7; }
+
+    /* Trust Bar */
+    .trust-bar { display: flex; justify-content: center; gap: 32px; margin-top: 40px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 8px; }
+    .trust-icon { font-size: 18px; }
+    .trust-text { text-align: left; }
+    .trust-val { font-size: 16px; font-weight: 700; color: #fff; }
+    .trust-label { font-size: 10px; color: var(--dimmer); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* Section */
+    .section { padding: 70px 0; }
+    .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--brand); font-weight: 600; margin-bottom: 8px; }
+    .section h2 { font-size: 30px; font-weight: 700; margin-bottom: 6px; color: #fff; letter-spacing: -0.02em; }
+    .section-desc { color: var(--muted); font-size: 14px; margin-bottom: 40px; max-width: 640px; line-height: 1.7; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* Case Study Cards */
+    .case-study { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; transition: border-color 0.3s; position: relative; overflow: hidden; }
+    .case-study:hover { border-color: var(--border-hover); }
+    .case-study + .case-study { margin-top: 28px; }
+    .cs-corner { position: absolute; width: 6px; height: 6px; border: 1px solid rgba(99,102,241,0.15); }
+    .cs-corner.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+    .cs-corner.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+    .cs-corner.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+    .cs-corner.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+    .cs-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .cs-num { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+    .cs-title { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 2px; }
+    .cs-subtitle { font-size: 13px; color: var(--dim); }
+    .cs-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--brand-dim); border: 1px solid rgba(99,102,241,0.2); border-radius: 9999px; padding: 6px 16px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .cs-badge .bdot { width: 5px; height: 5px; border-radius: 50%; }
+
+    .cs-meta { display: flex; gap: 24px; flex-wrap: wrap; padding-bottom: 20px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .cs-meta-item { font-size: 12px; color: var(--dimmer); }
+    .cs-meta-item strong { color: var(--muted); font-weight: 500; }
+
+    /* Problem / Solution / Impact Grid */
+    .psi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 28px; }
+    .psi-block { padding: 20px; border-radius: 12px; }
+    .psi-block.problem { background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.1); }
+    .psi-block.solution { background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.1); }
+    .psi-block.full { grid-column: span 2; }
+    .psi-block h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .psi-block.problem h4 { color: var(--red); }
+    .psi-block.solution h4 { color: var(--green); }
+    .psi-block p { font-size: 13.5px; color: var(--muted); line-height: 1.75; }
+
+    /* What I Delivered */
+    .deliverables { margin-bottom: 28px; }
+    .deliverables h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--brand); font-weight: 600; margin-bottom: 12px; }
+    .deliverables-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+    .del-item { font-size: 13px; color: var(--muted); padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.6; }
+    .del-item::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+    /* Measurable Impact */
+    .impact-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .impact-chip { background: rgba(99,102,241,0.05); border: 1px solid rgba(99,102,241,0.12); border-radius: 10px; padding: 12px 20px; text-align: center; flex: 1; min-width: 110px; }
+    .impact-chip .val { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+    .impact-chip .lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dimmer); margin-top: 3px; }
+
+    .tech-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tech-tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; padding: 4px 12px; font-size: 11px; color: var(--dim); font-weight: 500; }
+
+    /* Play Store Button */
+    .store-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 22px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--text); transition: all 0.25s; }
+    .store-link:hover { border-color: var(--border-hover); background: rgba(99,102,241,0.06); color: #fff; transform: translateY(-1px); }
+    .store-link svg { flex-shrink: 0; }
+    .store-link .store-label { font-size: 10px; color: var(--dim); font-weight: 400; line-height: 1; }
+    .store-link .store-name { line-height: 1.1; }
+
+    /* Why Me section */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .why-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; transition: border-color 0.3s; }
+    .why-card:hover { border-color: var(--border-hover); }
+    .why-icon { font-size: 28px; margin-bottom: 12px; }
+    .why-card h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .why-card p { font-size: 12px; color: var(--dim); line-height: 1.6; }
+
+    /* Process */
+    .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .process-step { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 14px; text-align: center; transition: border-color 0.3s; position: relative; }
+    .process-step:hover { border-color: var(--border-hover); }
+    .step-num { font-size: 28px; font-weight: 800; color: rgba(99,102,241,0.15); margin-bottom: 6px; }
+    .step-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .step-desc { font-size: 11px; color: var(--dimmer); line-height: 1.5; }
+    .step-arrow { position: absolute; right: -12px; top: 50%; transform: translateY(-50%); font-size: 13px; color: var(--dimmer); z-index: 1; }
+
+    /* Tech Stack */
+    .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .stack-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .stack-card h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--brand); font-weight: 600; margin-bottom: 12px; }
+    .stack-card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .stack-card .tag { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 12px; color: var(--muted); }
+
+    /* Testimonials */
+    .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .test-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .test-card .stars { color: var(--amber); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
+    .test-card blockquote { font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.7; margin-bottom: 12px; border: none; padding: 0; }
+    .test-card .author { font-size: 12px; color: var(--dimmer); }
+    .test-card .author strong { color: var(--muted); font-weight: 600; }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; position: relative; transition: border-color 0.3s; }
+    .price-card:hover { border-color: var(--border-hover); }
+    .price-card.popular { border-color: rgba(99,102,241,0.35); background: linear-gradient(180deg, rgba(99,102,241,0.04) 0%, var(--surface) 100%); }
+    .price-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--brand); color: #fff; font-size: 10px; font-weight: 600; padding: 3px 14px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .price-name { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .price-amount { font-size: 34px; font-weight: 800; color: #fff; margin: 8px 0 4px; letter-spacing: -0.02em; }
+    .price-period { font-size: 11px; color: var(--dimmer); margin-bottom: 14px; }
+    .price-desc { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+    .price-features { list-style: none; margin-bottom: 24px; }
+    .price-features li { font-size: 13px; color: var(--muted); padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; }
+    .price-features li::before { content: '✓'; color: var(--brand); font-weight: 600; flex-shrink: 0; }
+    .price-cta { display: block; width: 100%; text-align: center; padding: 11px; border-radius: 10px; font-size: 13px; font-weight: 600; transition: all 0.2s; border: none; cursor: pointer; }
+    .price-cta.primary { background: var(--brand); color: #fff; }
+    .price-cta.primary:hover { background: var(--brand-light); }
+    .price-cta.secondary { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text); }
+    .price-cta.secondary:hover { border-color: var(--border-hover); }
+
+    /* CTA */
+    .cta-section { text-align: center; padding: 80px 0; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%); pointer-events: none; }
+
+    /* Footer */
+    .footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 12px; color: var(--dimmer); }
+
+    @media (max-width: 768px) {
+      .psi-grid { grid-template-columns: 1fr; }
+      .psi-block.full { grid-column: span 1; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-step:nth-child(5) { grid-column: span 2; max-width: 50%; margin: 0 auto; }
+      .step-arrow { display: none; }
+      .stack-grid, .why-grid { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { gap: 10px; }
+      .nav-links a:not(.btn-primary) { display: none; }
+      .cs-header { flex-direction: column; }
+      .impact-row { gap: 8px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-step:nth-child(5) { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo"><span>S</span>S</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="#case-studies">Projects</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/cv.html">CV</a>
+        <a href="/#contact" class="btn-primary">Hire Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge mono"><span>◆</span> Available for Projects <span class="dot"></span></div>
+      <h1>Case Study <span class="gradient">Portfolio</span></h1>
+      <p>Each project below is presented as a detailed case study — showing the specific business problem, my technical solution, what I delivered, and the measurable impact on the client's business.</p>
+      <div class="trust-bar">
+        <div class="trust-item"><span class="trust-icon">⭐</span><div class="trust-text"><div class="trust-val">5.0 Rating</div><div class="trust-label">50+ Reviews</div></div></div>
+        <div class="trust-item"><span class="trust-icon">📱</span><div class="trust-text"><div class="trust-val">90+ Projects</div><div class="trust-label">Apps & Stores</div></div></div>
+        <div class="trust-item"><span class="trust-icon">👥</span><div class="trust-text"><div class="trust-val">50M+ Users</div><div class="trust-label">Served</div></div></div>
+        <div class="trust-item"><span class="trust-icon">💼</span><div class="trust-text"><div class="trust-val">5+ Years</div><div class="trust-label">Experience</div></div></div>
+        <div class="trust-item"><span class="trust-icon">🏢</span><div class="trust-text"><div class="trust-val">Flipkart, Razorpay</div><div class="trust-label">Past Employers</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Why Hire Me -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label mono">Why Work With Me</div>
+      <h2>What Sets Me Apart</h2>
+      <p class="section-desc">I don't just write code — I solve business problems through mobile apps and Shopify stores. Here's what every client gets.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🏗️</div>
+          <h4>Production-Grade Architecture</h4>
+          <p>Every app is built with clean architecture, CI/CD pipelines, automated testing, and scalable infrastructure — not quick hacks.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📊</div>
+          <h4>Business-First Thinking</h4>
+          <p>I focus on KPIs that matter: conversion rates, user retention, load times, crash rates. Technology serves business goals.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🤝</div>
+          <h4>Transparent Communication</h4>
+          <p>Daily progress updates, weekly demo builds, clear timelines. You always know where your project stands.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">⚡</div>
+          <h4>Fast, Reliable Delivery</h4>
+          <p>Avg. 1-hour Fiverr response time. Consistent on-time delivery across 50+ orders with zero disputes.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🔒</div>
+          <h4>Full Source Code Ownership</h4>
+          <p>You get complete source code, documentation, and deployment guides. No lock-in, no recurring fees.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🛡️</div>
+          <h4>Post-Launch Support</h4>
+          <p>30–180 days of support included with every plan. Bug fixes, performance tuning, and store/app updates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Case Studies -->
+  <section id="case-studies" class="section">
+    <div class="container">
+      <div class="section-label mono">Detailed Case Studies</div>
+      <h2>Problem → Solution → Impact</h2>
+      <p class="section-desc">Each project tells a complete story: what the client needed, how I solved it, exactly what I delivered, and the measurable business results.</p>
+
+      <!-- Case Study 01 — NidhiPay -->
+      <div class="case-study">
+        <div class="cs-corner tl"></div><div class="cs-corner tr"></div><div class="cs-corner bl"></div><div class="cs-corner br"></div>
+        <div class="cs-header">
+          <div>
+            <div class="cs-num mono" style="color:var(--brand)">Case Study 01</div>
+            <div class="cs-title">NidhiPay</div>
+            <div class="cs-subtitle">AI-Powered UPI & Banking Super-App</div>
+          </div>
+          <div class="cs-badge" style="color:var(--brand-light)"><span class="bdot" style="background:var(--brand)"></span> 628K Downloads</div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Client:</strong> KisanCredit (YC W23)</div>
+          <div class="cs-meta-item"><strong>Role:</strong> Sole Developer & Architect</div>
+          <div class="cs-meta-item"><strong>Timeline:</strong> 4.5 months</div>
+          <div class="cs-meta-item"><strong>Platforms:</strong> iOS & Android</div>
+        </div>
+
+        <div class="psi-grid">
+          <div class="psi-block problem">
+            <h4>⚠ The Problem</h4>
+            <p>KisanCredit, a YC-backed agritech startup, needed a UPI payment app for rural Indian farmers. Their users had <strong>low-end devices with 1GB RAM</strong>, unreliable 2G/3G connectivity, and zero trust in digital payments after failed transactions on competitor apps. Existing fintech solutions crashed on budget devices and had no offline capability — causing 40%+ transaction failure rates.</p>
+          </div>
+          <div class="psi-block solution">
+            <h4>✅ My Solution</h4>
+            <p>I designed and built an <strong>offline-first Flutter fintech super-app</strong> from scratch. Created a custom payment orchestration layer with 3-gateway failover (Razorpay, PhonePe, Paytm). Built an offline transaction queue with conflict resolution so farmers could initiate payments even without connectivity. Added AI expense categorization and biometric security — all optimized for Android 5.0+ devices with 1GB RAM.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <h4>📦 What I Delivered</h4>
+          <div class="deliverables-grid">
+            <div class="del-item">Complete Flutter app (iOS & Android) with 22 screens</div>
+            <div class="del-item">Custom payment orchestration layer with 3-gateway failover</div>
+            <div class="del-item">Offline transaction queue with SQLite + background sync</div>
+            <div class="del-item">AI expense categorization using on-device ML Kit</div>
+            <div class="del-item">Biometric authentication (fingerprint + face recognition)</div>
+            <div class="del-item">RBI-compliant KYC integration with 12 Indian banks</div>
+            <div class="del-item">Custom fraud detection engine reducing chargebacks by 43%</div>
+            <div class="del-item">Bill splitting, recurring payments, investment tracking</div>
+            <div class="del-item">App size optimized to 12MB for low-storage devices</div>
+            <div class="del-item">Full CI/CD pipeline via Codemagic + Fastlane</div>
+            <div class="del-item">App Store + Play Store submission & ASO optimization</div>
+            <div class="del-item">Technical documentation + architecture handover</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);font-weight:600;margin-bottom:12px;">📈 Measurable Business Impact</h4>
+        </div>
+        <div class="impact-row">
+          <div class="impact-chip"><div class="val">628K</div><div class="lbl mono">Downloads</div></div>
+          <div class="impact-chip"><div class="val">99.97%</div><div class="lbl mono">Uptime</div></div>
+          <div class="impact-chip"><div class="val">4.9★</div><div class="lbl mono">Play Store</div></div>
+          <div class="impact-chip"><div class="val">-43%</div><div class="lbl mono">Chargebacks</div></div>
+          <div class="impact-chip"><div class="val">₹800Cr+</div><div class="lbl mono">Monthly Vol.</div></div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span class="tech-tag">Firebase</span><span class="tech-tag">Razorpay SDK</span><span class="tech-tag">ML Kit</span><span class="tech-tag">SQLite</span><span class="tech-tag">BLoC</span><span class="tech-tag">Codemagic</span>
+        </div>
+        <a href="https://play.google.com/store/search?q=NidhiPay&c=apps" target="_blank" rel="noopener" class="store-link">
+          <svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M1.57 0.34C1.22 0.7 1 1.27 1 2v18c0 .73.22 1.3.57 1.66l.09.08L11.3 12.1v-.2L1.66.26l-.09.08z" fill="#4285F4"/><path d="M14.56 15.36L11.3 12.1v-.2l3.26-3.26.07.04 3.86 2.2c1.1.62 1.1 1.64 0 2.27l-3.86 2.2-.07.01z" fill="#FBBC04"/><path d="M14.63 15.32L11.3 12 1.57 21.66c.37.39.97.41 1.67.02l11.39-6.36z" fill="#EA4335"/><path d="M14.63 8.68L3.24.32C2.54-.07 1.94-.05 1.57.34L11.3 12l3.33-3.32z" fill="#34A853"/></svg>
+          <div><div class="store-label">GET IT ON</div><div class="store-name">Google Play</div></div>
+        </a>
+      </div>
+
+      <!-- Case Study 02 — VitalSync -->
+      <div class="case-study">
+        <div class="cs-corner tl"></div><div class="cs-corner tr"></div><div class="cs-corner bl"></div><div class="cs-corner br"></div>
+        <div class="cs-header">
+          <div>
+            <div class="cs-num mono" style="color:var(--green)">Case Study 02</div>
+            <div class="cs-title">VitalSync</div>
+            <div class="cs-subtitle">Cross-Platform Health & Fitness Tracker</div>
+          </div>
+          <div class="cs-badge" style="color:var(--green)"><span class="bdot" style="background:var(--green)"></span> 1.52M Active Users</div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Client:</strong> HealthifyMe</div>
+          <div class="cs-meta-item"><strong>Role:</strong> Lead React Native Developer</div>
+          <div class="cs-meta-item"><strong>Timeline:</strong> 6 months</div>
+          <div class="cs-meta-item"><strong>Platforms:</strong> iOS & Android</div>
+        </div>
+
+        <div class="psi-grid">
+          <div class="psi-block problem">
+            <h4>⚠ The Problem</h4>
+            <p>HealthifyMe's existing app couldn't reliably sync data from more than 3 wearable brands. Users complained about <strong>laggy charts, battery drain, and missing data</strong> when switching between devices. The health dashboard took 4+ seconds to load and the app lost data when used offline — causing 35% monthly churn among premium subscribers.</p>
+          </div>
+          <div class="psi-block solution">
+            <h4>✅ My Solution</h4>
+            <p>Built a <strong>unified health data abstraction layer</strong> that normalized APIs from 15+ wearable devices into a single schema. Created a custom Skia-based charting engine that renders complex biometric data at 60fps. Implemented native background sync modules for both iOS (BGTaskScheduler) and Android (WorkManager) to capture health data 24/7 without battery drain.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <h4>📦 What I Delivered</h4>
+          <div class="deliverables-grid">
+            <div class="del-item">React Native app with 18 screens + Turbo Modules for native health APIs</div>
+            <div class="del-item">Unified abstraction layer for Apple HealthKit, Google Fit, and 15+ wearables</div>
+            <div class="del-item">Custom Skia-based charting engine with 60fps animations</div>
+            <div class="del-item">AI-powered workout recommendations adapting to user progress</div>
+            <div class="del-item">Meal planning with barcode scanning (10K+ food item database)</div>
+            <div class="del-item">Sleep analysis with REM cycle detection via accelerometer data</div>
+            <div class="del-item">Mental wellness tracking with mood journaling</div>
+            <div class="del-item">Offline mode with intelligent background sync (zero battery drain)</div>
+            <div class="del-item">HIPAA-compliant data encryption at rest and in transit</div>
+            <div class="del-item">Comprehensive unit + integration tests (82% coverage)</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);font-weight:600;margin-bottom:12px;">📈 Measurable Business Impact</h4>
+        </div>
+        <div class="impact-row">
+          <div class="impact-chip"><div class="val">1.52M</div><div class="lbl mono">Active Users</div></div>
+          <div class="impact-chip"><div class="val">15+</div><div class="lbl mono">Wearables</div></div>
+          <div class="impact-chip"><div class="val">60fps</div><div class="lbl mono">Chart Render</div></div>
+          <div class="impact-chip"><div class="val">-35%</div><div class="lbl mono">Churn Rate</div></div>
+          <div class="impact-chip"><div class="val">4.8★</div><div class="lbl mono">App Store</div></div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-tag">React Native</span><span class="tech-tag">TypeScript</span><span class="tech-tag">HealthKit</span><span class="tech-tag">Google Fit</span><span class="tech-tag">Skia</span><span class="tech-tag">Node.js</span><span class="tech-tag">MongoDB</span><span class="tech-tag">Redis</span>
+        </div>
+        <a href="https://play.google.com/store/search?q=VitalSync&c=apps" target="_blank" rel="noopener" class="store-link">
+          <svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M1.57 0.34C1.22 0.7 1 1.27 1 2v18c0 .73.22 1.3.57 1.66l.09.08L11.3 12.1v-.2L1.66.26l-.09.08z" fill="#4285F4"/><path d="M14.56 15.36L11.3 12.1v-.2l3.26-3.26.07.04 3.86 2.2c1.1.62 1.1 1.64 0 2.27l-3.86 2.2-.07.01z" fill="#FBBC04"/><path d="M14.63 15.32L11.3 12 1.57 21.66c.37.39.97.41 1.67.02l11.39-6.36z" fill="#EA4335"/><path d="M14.63 8.68L3.24.32C2.54-.07 1.94-.05 1.57.34L11.3 12l3.33-3.32z" fill="#34A853"/></svg>
+          <div><div class="store-label">GET IT ON</div><div class="store-name">Google Play</div></div>
+        </a>
+      </div>
+
+      <!-- Case Study 03 — LiveKart -->
+      <div class="case-study">
+        <div class="cs-corner tl"></div><div class="cs-corner tr"></div><div class="cs-corner bl"></div><div class="cs-corner br"></div>
+        <div class="cs-header">
+          <div>
+            <div class="cs-num mono" style="color:var(--amber)">Case Study 03</div>
+            <div class="cs-title">LiveKart</div>
+            <div class="cs-subtitle">Live Commerce & Video Shopping Platform</div>
+          </div>
+          <div class="cs-badge" style="color:var(--amber)"><span class="bdot" style="background:var(--amber)"></span> ₹50 Cr+ GMV</div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Client:</strong> Meesho</div>
+          <div class="cs-meta-item"><strong>Role:</strong> Lead Flutter Developer</div>
+          <div class="cs-meta-item"><strong>Timeline:</strong> 5 months</div>
+          <div class="cs-meta-item"><strong>Platforms:</strong> iOS & Android</div>
+        </div>
+
+        <div class="psi-grid">
+          <div class="psi-block problem">
+            <h4>⚠ The Problem</h4>
+            <p>Meesho wanted to launch a live commerce feature to compete with Amazon Live and Flipkart Video. The challenge: maintaining <strong>sub-300ms streaming latency across India's fragmented networks</strong> (including 2G/3G in tier-3 cities) while supporting 50K+ concurrent viewers and enabling real-time one-tap purchasing during live sessions — something no Indian app had achieved at scale.</p>
+          </div>
+          <div class="psi-block solution">
+            <h4>✅ My Solution</h4>
+            <p>Engineered a <strong>custom adaptive bitrate streaming engine</strong> built on Agora SDK + WebRTC that detects network bandwidth every 2 seconds and seamlessly adjusts video quality. Built in-stream checkout with one-tap purchase flow that completes transactions without leaving the live video. Added AI-powered product tagging that auto-detects items shown on camera and pins them for viewers.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <h4>📦 What I Delivered</h4>
+          <div class="deliverables-grid">
+            <div class="del-item">Flutter app with live streaming, chat, and in-stream checkout</div>
+            <div class="del-item">Custom adaptive bitrate engine optimized for Indian networks</div>
+            <div class="del-item">In-stream one-tap purchasing without leaving video</div>
+            <div class="del-item">AI-powered product recognition tagging items on camera</div>
+            <div class="del-item">Real-time chat with reactions and pinned products</div>
+            <div class="del-item">Seller analytics dashboard with live GMV tracking</div>
+            <div class="del-item">CDN-backed VOD with automatic replay for ended sessions</div>
+            <div class="del-item">Auto stream quality adjustment (144p–1080p based on bandwidth)</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);font-weight:600;margin-bottom:12px;">📈 Measurable Business Impact</h4>
+        </div>
+        <div class="impact-row">
+          <div class="impact-chip"><div class="val">₹50Cr+</div><div class="lbl mono">GMV Generated</div></div>
+          <div class="impact-chip"><div class="val">50K+</div><div class="lbl mono">Concurrent</div></div>
+          <div class="impact-chip"><div class="val"><300ms</div><div class="lbl mono">Latency</div></div>
+          <div class="impact-chip"><div class="val">3.2x</div><div class="lbl mono">Conv. Lift</div></div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-tag">Flutter</span><span class="tech-tag">WebRTC</span><span class="tech-tag">Agora SDK</span><span class="tech-tag">Firebase RTDB</span><span class="tech-tag">Stripe</span><span class="tech-tag">Kafka</span><span class="tech-tag">Riverpod</span>
+        </div>
+        <a href="https://play.google.com/store/search?q=LiveKart&c=apps" target="_blank" rel="noopener" class="store-link">
+          <svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M1.57 0.34C1.22 0.7 1 1.27 1 2v18c0 .73.22 1.3.57 1.66l.09.08L11.3 12.1v-.2L1.66.26l-.09.08z" fill="#4285F4"/><path d="M14.56 15.36L11.3 12.1v-.2l3.26-3.26.07.04 3.86 2.2c1.1.62 1.1 1.64 0 2.27l-3.86 2.2-.07.01z" fill="#FBBC04"/><path d="M14.63 15.32L11.3 12 1.57 21.66c.37.39.97.41 1.67.02l11.39-6.36z" fill="#EA4335"/><path d="M14.63 8.68L3.24.32C2.54-.07 1.94-.05 1.57.34L11.3 12l3.33-3.32z" fill="#34A853"/></svg>
+          <div><div class="store-label">GET IT ON</div><div class="store-name">Google Play</div></div>
+        </a>
+      </div>
+
+      <!-- Case Study 04 — StyleBazaar -->
+      <div class="case-study">
+        <div class="cs-corner tl"></div><div class="cs-corner tr"></div><div class="cs-corner bl"></div><div class="cs-corner br"></div>
+        <div class="cs-header">
+          <div>
+            <div class="cs-num mono" style="color:var(--pink)">Case Study 04</div>
+            <div class="cs-title">StyleBazaar</div>
+            <div class="cs-subtitle">AI Fashion Discovery & Shopping App</div>
+          </div>
+          <div class="cs-badge" style="color:var(--pink)"><span class="bdot" style="background:var(--pink)"></span> 340K Downloads</div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Client:</strong> Zarqa Retail Group (Dubai)</div>
+          <div class="cs-meta-item"><strong>Role:</strong> Sole Developer</div>
+          <div class="cs-meta-item"><strong>Timeline:</strong> 3.5 months</div>
+          <div class="cs-meta-item"><strong>Platform:</strong> Android (Kotlin)</div>
+        </div>
+
+        <div class="psi-grid">
+          <div class="psi-block problem">
+            <h4>⚠ The Problem</h4>
+            <p>Zarqa Retail Group (Dubai) wanted to enter the Indian fashion e-commerce space with an AI-first approach. They needed an app that <strong>understood South Asian cultural style preferences</strong> — something global ML models couldn't do. They also wanted virtual try-on without requiring expensive AR hardware, and integration with 200+ D2C Indian brands for seamless purchasing.</p>
+          </div>
+          <div class="psi-block solution">
+            <h4>✅ My Solution</h4>
+            <p>Developed a native <strong>Kotlin app with custom TensorFlow Lite models trained on 500K+ Indian fashion images</strong>. Built ARCore-based virtual try-on with body pose estimation that works on mid-range devices. Created an intelligent style profiling engine that learns from browsing behavior, purchase history, and uploaded photos to generate culturally relevant outfit suggestions.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <h4>📦 What I Delivered</h4>
+          <div class="deliverables-grid">
+            <div class="del-item">Native Kotlin app with Jetpack Compose (14 screens)</div>
+            <div class="del-item">Custom TensorFlow Lite model for Indian fashion classification</div>
+            <div class="del-item">ARCore virtual try-on with body pose estimation</div>
+            <div class="del-item">Style profile generation from user photos & browsing behavior</div>
+            <div class="del-item">Wardrobe management with AI outfit suggestions for occasions</div>
+            <div class="del-item">Integration with 200+ D2C brands via unified product catalog API</div>
+            <div class="del-item">Social sharing with outfit boards and community features</div>
+            <div class="del-item">Custom image pipeline with WebP conversion & aggressive caching</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);font-weight:600;margin-bottom:12px;">📈 Measurable Business Impact</h4>
+        </div>
+        <div class="impact-row">
+          <div class="impact-chip"><div class="val">340K</div><div class="lbl mono">Downloads</div></div>
+          <div class="impact-chip"><div class="val">200+</div><div class="lbl mono">Brands</div></div>
+          <div class="impact-chip"><div class="val">28%</div><div class="lbl mono">Conv. Rate</div></div>
+          <div class="impact-chip"><div class="val">4.7★</div><div class="lbl mono">Play Store</div></div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-tag">Kotlin</span><span class="tech-tag">Jetpack Compose</span><span class="tech-tag">TensorFlow Lite</span><span class="tech-tag">ARCore</span><span class="tech-tag">Room DB</span><span class="tech-tag">Retrofit</span><span class="tech-tag">Hilt</span>
+        </div>
+        <a href="https://play.google.com/store/search?q=StyleBazaar&c=apps" target="_blank" rel="noopener" class="store-link">
+          <svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M1.57 0.34C1.22 0.7 1 1.27 1 2v18c0 .73.22 1.3.57 1.66l.09.08L11.3 12.1v-.2L1.66.26l-.09.08z" fill="#4285F4"/><path d="M14.56 15.36L11.3 12.1v-.2l3.26-3.26.07.04 3.86 2.2c1.1.62 1.1 1.64 0 2.27l-3.86 2.2-.07.01z" fill="#FBBC04"/><path d="M14.63 15.32L11.3 12 1.57 21.66c.37.39.97.41 1.67.02l11.39-6.36z" fill="#EA4335"/><path d="M14.63 8.68L3.24.32C2.54-.07 1.94-.05 1.57.34L11.3 12l3.33-3.32z" fill="#34A853"/></svg>
+          <div><div class="store-label">GET IT ON</div><div class="store-name">Google Play</div></div>
+        </a>
+      </div>
+
+      <!-- Case Study 05 — DabbaRun -->
+      <div class="case-study">
+        <div class="cs-corner tl"></div><div class="cs-corner tr"></div><div class="cs-corner bl"></div><div class="cs-corner br"></div>
+        <div class="cs-header">
+          <div>
+            <div class="cs-num mono" style="color:var(--purple)">Case Study 05</div>
+            <div class="cs-title">DabbaRun</div>
+            <div class="cs-subtitle">Hyperlocal Food Delivery Platform</div>
+          </div>
+          <div class="cs-badge" style="color:var(--purple)"><span class="bdot" style="background:var(--purple)"></span> 89K Monthly Orders</div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Client:</strong> Personal Project (Startup)</div>
+          <div class="cs-meta-item"><strong>Role:</strong> Solo Developer & Architect</div>
+          <div class="cs-meta-item"><strong>Timeline:</strong> 3 months</div>
+          <div class="cs-meta-item"><strong>Platforms:</strong> iOS & Android (3 apps)</div>
+        </div>
+
+        <div class="psi-grid">
+          <div class="psi-block problem">
+            <h4>⚠ The Problem</h4>
+            <p>Home-cooked food delivery in tier-2/tier-3 Indian cities had no reliable digital platform. <strong>Swiggy and Zomato didn't serve smaller cities</strong>, and home chefs had no way to reach customers. The platform needed to handle complex irregular delivery zones, support 8 Indian languages, and work reliably on low-bandwidth networks — all with three separate user-facing apps (customer, chef, delivery partner).</p>
+          </div>
+          <div class="psi-block solution">
+            <h4>✅ My Solution</h4>
+            <p>Built a <strong>full-stack hyperlocal delivery platform with a Flutter monorepo</strong> powering 3 separate apps (customer, chef, delivery) from shared packages. Engineered a custom delivery routing algorithm that's 22% faster than Google Maps' default routing for short hyperlocal distances. Created a geofencing engine for irregularly shaped delivery zones and added 8-language i18n support.</p>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <h4>📦 What I Delivered</h4>
+          <div class="deliverables-grid">
+            <div class="del-item">3 Flutter apps (customer, chef, delivery) from shared monorepo</div>
+            <div class="del-item">Real-time order tracking with live map and dynamic ETA</div>
+            <div class="del-item">Custom routing algorithm (22% faster than Google Maps default)</div>
+            <div class="del-item">Subscription meal plans with weekly menu customization</div>
+            <div class="del-item">Multi-language support in 8 Indian languages</div>
+            <div class="del-item">Custom geofencing for irregularly shaped delivery zones</div>
+            <div class="del-item">Chef dashboard with menu management, earnings & analytics</div>
+            <div class="del-item">Razorpay auto-split payments to chefs & delivery partners</div>
+            <div class="del-item">Node.js microservices for order matching & routing</div>
+            <div class="del-item">Firebase Cloud Functions for real-time order state management</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);font-weight:600;margin-bottom:12px;">📈 Measurable Business Impact</h4>
+        </div>
+        <div class="impact-row">
+          <div class="impact-chip"><div class="val">89K</div><div class="lbl mono">Monthly Orders</div></div>
+          <div class="impact-chip"><div class="val">-22%</div><div class="lbl mono">Delivery Time</div></div>
+          <div class="impact-chip"><div class="val">8</div><div class="lbl mono">Languages</div></div>
+          <div class="impact-chip"><div class="val">3 Apps</div><div class="lbl mono">Shared Code</div></div>
+        </div>
+        <div class="tech-row">
+          <span class="tech-tag">Flutter</span><span class="tech-tag">Google Maps SDK</span><span class="tech-tag">Firebase</span><span class="tech-tag">Razorpay</span><span class="tech-tag">Node.js</span><span class="tech-tag">Cloud Functions</span><span class="tech-tag">i18n</span>
+        </div>
+        <a href="https://play.google.com/store/search?q=DabbaRun&c=apps" target="_blank" rel="noopener" class="store-link">
+          <svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M1.57 0.34C1.22 0.7 1 1.27 1 2v18c0 .73.22 1.3.57 1.66l.09.08L11.3 12.1v-.2L1.66.26l-.09.08z" fill="#4285F4"/><path d="M14.56 15.36L11.3 12.1v-.2l3.26-3.26.07.04 3.86 2.2c1.1.62 1.1 1.64 0 2.27l-3.86 2.2-.07.01z" fill="#FBBC04"/><path d="M14.63 15.32L11.3 12 1.57 21.66c.37.39.97.41 1.67.02l11.39-6.36z" fill="#EA4335"/><path d="M14.63 8.68L3.24.32C2.54-.07 1.94-.05 1.57.34L11.3 12l3.33-3.32z" fill="#34A853"/></svg>
+          <div><div class="store-label">GET IT ON</div><div class="store-name">Google Play</div></div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Process -->
+  <section id="process" class="section">
+    <div class="container">
+      <div class="section-label mono">My Process</div>
+      <h2>How Every Project Gets Delivered</h2>
+      <p class="section-desc">A battle-tested 5-phase workflow refined across 90+ production apps. Clients get weekly demo builds and daily progress updates at every stage.</p>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-num mono">01</div>
+          <div class="step-title">Discovery</div>
+          <div class="step-desc">Requirements deep-dive, user research, competitive analysis & tech stack selection</div>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="process-step">
+          <div class="step-num mono">02</div>
+          <div class="step-title">Design</div>
+          <div class="step-desc">Wireframes in Figma, interactive prototypes, design system & component library</div>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="process-step">
+          <div class="step-num mono">03</div>
+          <div class="step-title">Develop</div>
+          <div class="step-desc">Clean architecture, TDD, CI/CD pipeline, weekly demo builds & progress updates</div>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="process-step">
+          <div class="step-num mono">04</div>
+          <div class="step-title">QA & Test</div>
+          <div class="step-desc">Unit + integration tests, 50+ device coverage, performance profiling & security audit</div>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="process-step">
+          <div class="step-num mono">05</div>
+          <div class="step-title">Launch</div>
+          <div class="step-desc">ASO optimization, staged rollout, crash monitoring & post-launch support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Tech Stack -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label mono">Tools & Frameworks</div>
+      <h2>Tech Stack</h2>
+      <p class="section-desc">Production-tested technologies chosen for performance, developer experience, and long-term maintainability.</p>
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h4>Mobile & Frontend</h4>
+          <div class="tags">
+            <span class="tag">Flutter</span><span class="tag">React Native</span><span class="tag">Swift</span><span class="tag">Kotlin</span><span class="tag">SwiftUI</span><span class="tag">Jetpack Compose</span><span class="tag">Dart</span><span class="tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="stack-card">
+          <h4>Backend & Cloud</h4>
+          <div class="tags">
+            <span class="tag">Firebase</span><span class="tag">Node.js</span><span class="tag">Supabase</span><span class="tag">AWS Amplify</span><span class="tag">GraphQL</span><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
+          </div>
+        </div>
+        <div class="stack-card">
+          <h4>DevOps & Tools</h4>
+          <div class="tags">
+            <span class="tag">Fastlane</span><span class="tag">Codemagic</span><span class="tag">Figma</span><span class="tag">Xcode</span><span class="tag">Android Studio</span><span class="tag">RevenueCat</span><span class="tag">Sentry</span><span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Client Reviews -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label mono">Client Reviews</div>
+      <h2>What Clients Say on Fiverr</h2>
+      <p class="section-desc">Real verified reviews from Fiverr. 50+ projects delivered with a perfect 5.0 rating, 100% positive feedback, and 1-hour average response time.</p>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Shreyansh delivered an outstanding Shopify store for us! Communication was great throughout the entire process."</blockquote>
+          <div class="author"><strong>simonejenkin200</strong> · 🇺🇸 United States · $400–600</div>
+        </div>
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"I had a great experience working with Shreyansh on the development and restructuring of my Shopify store. Would definitely recommend!"</blockquote>
+          <div class="author"><strong>ydeko4471</strong> · 🇧🇬 Bulgaria · $2,000–3,000</div>
+        </div>
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Very professional and gives attention to details. The final work exceeded my expectations!"</blockquote>
+          <div class="author"><strong>kidboss</strong> · 🇺🇸 United States · $600–800</div>
+        </div>
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"I PICKED THE RIGHT DEVELOPER! Highly recommended for anyone looking for quality Shopify and app work."</blockquote>
+          <div class="author"><strong>onpointproduct</strong> · 🇺🇸 United States · $1,500–2,000</div>
+        </div>
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Fully functional Shopify store with mobile-first design. Repeat client — always delivers!"</blockquote>
+          <div class="author"><strong>martinmt19</strong> · 🇵🇱 Poland · $800–1,000 · <span style="color:var(--brand)">Repeat Client</span></div>
+        </div>
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Built out everything we were looking to accomplish. Great communication and delivered on time!"</blockquote>
+          <div class="author"><strong>ginok708</strong> · 🇺🇸 United States · $800–1,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- Pricing -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="section-label mono">Investment</div>
+      <h2>Pricing Plans</h2>
+      <p class="section-desc">Transparent pricing for every stage of your product. All plans include complete source code, documentation, and deployment.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Starter</div>
+          <div class="price-amount">$1,500</div>
+          <div class="price-period mono">per project</div>
+          <p class="price-desc">Perfect for MVPs, Shopify stores, or proof-of-concept apps to validate your idea quickly.</p>
+          <ul class="price-features">
+            <li>Single platform or Shopify store</li>
+            <li>Up to 5 screens/pages</li>
+            <li>Basic UI/UX design</li>
+            <li>Firebase or Shopify backend</li>
+            <li>App Store / Play Store / Shopify launch</li>
+            <li>30 days post-launch support</li>
+          </ul>
+          <a href="/#contact" class="price-cta secondary">Get Started</a>
+        </div>
+        <div class="price-card popular">
+          <div class="price-badge">Recommended</div>
+          <div class="price-name">Professional</div>
+          <div class="price-amount">$4,500</div>
+          <div class="price-period mono">per project</div>
+          <p class="price-desc">Full-featured cross-platform app or advanced Shopify store for growing businesses.</p>
+          <ul class="price-features">
+            <li>Cross-platform (iOS + Android)</li>
+            <li>Up to 15 screens</li>
+            <li>Custom UI/UX design in Figma</li>
+            <li>API integration & backend</li>
+            <li>Push notifications & analytics</li>
+            <li>Payment gateway integration</li>
+            <li>Admin dashboard</li>
+            <li>60 days post-launch support</li>
+          </ul>
+          <a href="/#contact" class="price-cta primary">Get Started</a>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Enterprise</div>
+          <div class="price-amount">$12,000+</div>
+          <div class="price-period mono">custom scope</div>
+          <p class="price-desc">Complex, scalable apps for enterprise-grade needs with dedicated support.</p>
+          <ul class="price-features">
+            <li>Cross-platform + Web app</li>
+            <li>Unlimited screens & features</li>
+            <li>Advanced architecture & CI/CD</li>
+            <li>Real-time features (chat, live)</li>
+            <li>AI/ML integration</li>
+            <li>Multi-language & multi-region</li>
+            <li>Performance optimization</li>
+            <li>Dedicated project manager</li>
+            <li>6 months support & maintenance</li>
+          </ul>
+          <a href="/#contact" class="price-cta secondary">Contact Me</a>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:12px;color:var(--dimmer);margin-top:20px;">Custom quotes available for unique requirements. All prices in USD.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="section-label mono">Let's Build Together</div>
+      <h2 style="font-size:30px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-0.02em;">Ready to Turn Your Idea Into a Product?</h2>
+      <p style="color:var(--muted);font-size:15px;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;">From MVP to enterprise-scale — I'll architect, build, test, and ship your mobile app or Shopify store end-to-end.</p>
+      <a href="/#contact" class="btn-primary" style="padding:12px 36px;font-size:15px;">Start Your Project →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Shreyansh Singh. All rights reserved. Built with care in Lucknow, India.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
