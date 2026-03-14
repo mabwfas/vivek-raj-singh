@@ -1,4 +1,11 @@
 import { motion } from 'framer-motion';
+import { Github, Linkedin, Twitter } from 'lucide-react';
+
+const socials = [
+  { icon: Github, href: 'https://github.com/vivekrajsingh', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com/in/vivekrajsingh', label: 'LinkedIn' },
+  { icon: Twitter, href: 'https://twitter.com/vivekrajdev', label: 'Twitter' },
+];
 
 export default function Footer() {
   return (
@@ -8,7 +15,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl relative z-10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="text-lg font-bold text-shimmer">SS</span>
+            <span className="text-lg font-bold text-shimmer">VR</span>
             <div className="w-[1px] h-4 bg-white/[0.06]" />
             <p className="text-xs sm:text-[11px] text-zinc-600 font-mono">
               &copy; {new Date().getFullYear()} Vivek Raj Singh
@@ -16,6 +23,22 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-4">
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              {socials.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-all duration-300"
+                  aria-label={label}
+                >
+                  <Icon size={15} />
+                </a>
+              ))}
+            </div>
+            <div className="w-[1px] h-3 bg-white/[0.04]" />
             <div className="flex items-center gap-1.5 text-xs sm:text-[11px] text-zinc-600">
               <span>Designed with</span>
               <motion.span

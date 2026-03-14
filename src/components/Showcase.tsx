@@ -75,17 +75,17 @@ export default function Showcase() {
                 <div className="w-8 h-8 rounded-lg bg-sky-500/30 flex items-center justify-center mb-3">
                   <Globe size={16} className="text-sky-400" />
                 </div>
-                <div className="text-sm font-semibold text-white mb-1">DevBoard</div>
-                <div className="text-[10px] text-zinc-500 font-mono">v2.4.0 • Live</div>
+                <div className="text-sm font-semibold text-white mb-1">Clear Edge</div>
+                <div className="text-[10px] text-zinc-500 font-mono">Live • #1 SEO</div>
               </div>
-              {['PayFlow', 'StorePulse', 'HireSync', 'CloudDeploy'].map((app, i) => (
+              {['Curioh Pets', 'Tandoore', 'SquadBurn', 'More Projects'].map((app, i) => (
                 <div
                   key={app}
                   className="rounded-lg bg-white/[0.02] border border-white/[0.04] p-3 hover:bg-white/[0.04] transition-colors"
                 >
                   <div className="text-xs text-zinc-400">{app}</div>
                   <div className="text-[10px] text-zinc-600 mt-0.5 font-mono">
-                    {['Active', 'Beta', 'Production', 'Staging'][i]}
+                    {['E-Commerce', 'Restaurant', 'Fitness Brand', 'View All'][i]}
                   </div>
                 </div>
               ))}

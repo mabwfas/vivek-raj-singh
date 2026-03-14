@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useCallback } from 'react';
-import { Mail, MapPin, Phone, Send, MessageCircle } from 'lucide-react';
+import { useRef, useCallback, useState } from 'react';
+import { Mail, MapPin, Phone, Send, MessageCircle, Github, Linkedin, CheckCircle } from 'lucide-react';
 import { profile } from '../data';
 
 function InteractiveCard({
@@ -35,6 +35,30 @@ function InteractiveCard({
 export default function Contact() {
   const sectionRef = useRef(null);
   const inView = useInView(sectionRef, { once: true });
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmitting(true);
+    try {
+      // Send via mailto as fallback — opens email client
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const message = formData.get('message') as string;
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+      setSubmitted(true);
+    } catch {
+      // Fallback
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="relative py-28 px-6">
@@ -124,6 +148,57 @@ export default function Contact() {
               </div>
             </InteractiveCard>
 
+            {/* Social Links */}
+            <div className="grid grid-cols-2 gap-3">
+              <motion.a
+                href="https://github.com/vivekrajsingh"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.35 }}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                className="dark-card corner-squares rounded-xl p-4 flex items-center gap-3 group block glass-glow"
+              >
+                <span className="sq sq-tl" /><span className="sq sq-tr" />
+                <span className="sq sq-bl" /><span className="sq sq-br" />
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105"
+                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                >
+                  <Github size={15} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-[11px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.15em] font-mono">GitHub</p>
+                  <p className="text-[12px] text-zinc-300 group-hover:text-white transition-colors">View Code</p>
+                </div>
+              </motion.a>
+
+              <motion.a
+                href="https://linkedin.com/in/vivekrajsingh"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.35 }}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                className="dark-card corner-squares rounded-xl p-4 flex items-center gap-3 group block glass-glow"
+              >
+                <span className="sq sq-tl" /><span className="sq sq-tr" />
+                <span className="sq sq-bl" /><span className="sq sq-br" />
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105"
+                  style={{ background: '#0077B510', border: '1px solid #0077B520' }}
+                >
+                  <Linkedin size={15} style={{ color: '#0077B5' }} />
+                </div>
+                <div>
+                  <p className="text-[11px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.15em] font-mono">LinkedIn</p>
+                  <p className="text-[12px] text-zinc-300 group-hover:text-white transition-colors">Connect</p>
+                </div>
+              </motion.a>
+            </div>
+
             {/* WhatsApp CTA */}
             <motion.a
               href={`https://wa.me/919876543213`}
@@ -157,44 +232,65 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <InteractiveCard className="p-6">
-              <form className="relative z-10 space-y-4" onSubmit={(e) => e.preventDefault()}>
-                {[
-                  { label: 'Name', type: 'text', placeholder: 'Your name' },
-                  { label: 'Email', type: 'email', placeholder: 'your@email.com' },
-                ].map(({ label, type, placeholder }) => (
-                  <div key={label} className="input-glow">
+              {submitted ? (
+                <div className="relative z-10 flex flex-col items-center justify-center py-12 text-center">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4">
+                    <CheckCircle size={24} className="text-emerald-400" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">Message Sent!</h3>
+                  <p className="text-sm text-zinc-400">Your email client should have opened. I'll get back to you within 24 hours.</p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="mt-6 text-sm text-brand hover:text-brand-light transition-colors"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+                <form className="relative z-10 space-y-4" onSubmit={handleSubmit}>
+                  {[
+                    { label: 'Name', name: 'name', type: 'text', placeholder: 'Your name' },
+                    { label: 'Email', name: 'email', type: 'email', placeholder: 'your@email.com' },
+                  ].map(({ label, name, type, placeholder }) => (
+                    <div key={label} className="input-glow">
+                      <label className="text-[11px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.2em] font-mono mb-2 block">
+                        {label}
+                      </label>
+                      <input
+                        type={type}
+                        name={name}
+                        required
+                        placeholder={placeholder}
+                        className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand/40 focus:bg-white/[0.04] transition-all duration-300"
+                      />
+                    </div>
+                  ))}
+                  <div className="input-glow">
                     <label className="text-[11px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.2em] font-mono mb-2 block">
-                      {label}
+                      Message
                     </label>
-                    <input
-                      type={type}
-                      placeholder={placeholder}
-                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand/40 focus:bg-white/[0.04] transition-all duration-300"
+                    <textarea
+                      name="message"
+                      required
+                      rows={4}
+                      placeholder="Tell me about your project..."
+                      className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand/40 focus:bg-white/[0.04] transition-all duration-300 resize-none"
                     />
                   </div>
-                ))}
-                <div className="input-glow">
-                  <label className="text-[11px] sm:text-[10px] text-zinc-500 uppercase tracking-[0.2em] font-mono mb-2 block">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    placeholder="Tell me about your project..."
-                    className="w-full bg-white/[0.03] border border-white/[0.06] rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand/40 focus:bg-white/[0.04] transition-all duration-300 resize-none"
-                  />
-                </div>
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full rounded-lg bg-brand py-3.5 text-sm font-medium text-white hover:bg-brand-light transition-all duration-300 glow-brand shine-sweep flex items-center justify-center gap-2"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <Send size={14} />
-                    Send Message
-                  </span>
-                </motion.button>
-              </form>
+                  <motion.button
+                    type="submit"
+                    disabled={submitting}
+                    whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full rounded-lg bg-brand py-3.5 text-sm font-medium text-white hover:bg-brand-light transition-all duration-300 glow-brand shine-sweep flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <Send size={14} />
+                      {submitting ? 'Sending...' : 'Send Message'}
+                    </span>
+                  </motion.button>
+                </form>
+              )}
             </InteractiveCard>
           </motion.div>
         </div>

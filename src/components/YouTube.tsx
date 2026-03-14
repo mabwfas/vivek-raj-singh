@@ -21,7 +21,7 @@ export default function YouTube() {
             <span className="gradient-text">YouTube</span> Channel
           </h2>
           <p className="text-zinc-500 max-w-xl mx-auto text-sm">
-            Sharing knowledge with millions through Digital Marketing Heroes.
+            Sharing dev tutorials, system design deep-dives, and full-stack building sessions.
           </p>
         </motion.div>
 

@@ -22,7 +22,7 @@ export default function FiverrReviews() {
             <span className="gradient-text">Fiverr</span> Client Feedback
           </h2>
           <p className="text-zinc-500 max-w-xl mx-auto text-sm">
-            Real reviews from real clients. 100% five-star rating across 50+ projects.
+            Real reviews from real clients. 100% five-star rating across 35+ projects.
           </p>
         </motion.div>
 

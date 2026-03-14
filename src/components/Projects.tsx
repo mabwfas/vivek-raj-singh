@@ -1,34 +1,14 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useCallback } from 'react';
 import { projects } from '../data';
-import { Star, Zap, Shield, TrendingUp, Smartphone, Activity } from 'lucide-react';
+import { Star, Zap, Shield, TrendingUp, Smartphone, Activity, ExternalLink } from 'lucide-react';
 
 const projectImages: Record<string, string> = {
-  NidhiPay: '/projects/nidhipay.jpg',
-  VitalSync: '/projects/vitalsync.jpg',
-  LiveKart: '/projects/livekart.jpg',
-  StyleBazaar: '/projects/stylebazaar.jpg',
-  DabbaRun: '/projects/dabbarun.jpg',
+  'Clear Edge Hauling': '/projects/clearedge.jpg',
+  'Curioh Pets': '/projects/curioh.jpg',
+  'Tandoore': '/projects/tandoore.jpg',
+  'SquadBurn': '/projects/squadburn.jpg',
 };
-
-const playStoreLinks: Record<string, string> = {
-  NidhiPay: 'https://play.google.com/store/search?q=NidhiPay&c=apps',
-  VitalSync: 'https://play.google.com/store/search?q=VitalSync&c=apps',
-  LiveKart: 'https://play.google.com/store/search?q=LiveKart&c=apps',
-  StyleBazaar: 'https://play.google.com/store/search?q=StyleBazaar&c=apps',
-  DabbaRun: 'https://play.google.com/store/search?q=DabbaRun&c=apps',
-};
-
-function PlayStoreIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size * 1.1} viewBox="0 0 20 22" fill="none">
-      <path d="M1.57 0.34C1.22 0.7 1 1.27 1 2v18c0 .73.22 1.3.57 1.66l.09.08L11.3 12.1v-.2L1.66.26l-.09.08z" fill="#4285F4"/>
-      <path d="M14.56 15.36L11.3 12.1v-.2l3.26-3.26.07.04 3.86 2.2c1.1.62 1.1 1.64 0 2.27l-3.86 2.2-.07.01z" fill="#FBBC04"/>
-      <path d="M14.63 15.32L11.3 12 1.57 21.66c.37.39.97.41 1.67.02l11.39-6.36z" fill="#EA4335"/>
-      <path d="M14.63 8.68L3.24.32C2.54-.07 1.94-.05 1.57.34L11.3 12l3.33-3.32z" fill="#34A853"/>
-    </svg>
-  );
-}
 
 /* ── Corner squares — 21st.dev Dark Grid ── */
 function CornerSquares() {
@@ -415,16 +395,16 @@ function FeaturedProjectCard({
                 className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0"
                 style={{ background: `linear-gradient(135deg, ${project.color}, ${project.color}90)` }}
               >
-                SS
+                VR
               </div>
               <div className="min-w-0">
                 <span className="text-xs sm:text-[11px] text-zinc-400 font-medium block leading-tight">{project.role}</span>
                 <span className="text-[10px] text-zinc-600 font-mono">Client: {project.client}</span>
               </div>
             </div>
-            {playStoreLinks[project.title] && (
+            {(project as any).url && (
               <a
-                href={playStoreLinks[project.title]}
+                href={(project as any).url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3.5 py-2 rounded-lg border transition-all duration-300 hover:-translate-y-0.5 flex-shrink-0"
@@ -441,10 +421,10 @@ function FeaturedProjectCard({
                   e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
                 }}
               >
-                <PlayStoreIcon size={14} />
+                <ExternalLink size={14} className="text-zinc-400" />
                 <div className="leading-none">
-                  <div className="text-[8px] text-zinc-500 uppercase tracking-wider">GET IT ON</div>
-                  <div className="text-[11px] font-semibold text-zinc-300">Google Play</div>
+                  <div className="text-[8px] text-zinc-500 uppercase tracking-wider">VIEW</div>
+                  <div className="text-[11px] font-semibold text-zinc-300">Live Site</div>
                 </div>
               </a>
             )}
@@ -470,7 +450,7 @@ function FeaturedProjectCard({
           <>
             <FloatingWidget
               icon={Activity}
-              label="Active Users"
+              label="Result"
               value={isHealth ? '1.52M' : project.metric}
               color={project.color}
               delay={0.8}
@@ -656,16 +636,16 @@ function ProjectCard({
               className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0"
               style={{ background: `linear-gradient(135deg, ${project.color}, ${project.color}90)` }}
             >
-              SS
+              VR
             </div>
             <div className="min-w-0">
               <span className="text-[11px] sm:text-[10px] text-zinc-400 font-medium block leading-tight">{project.role}</span>
               <span className="text-[9px] text-zinc-600 font-mono">Client: {project.client}</span>
             </div>
           </div>
-          {playStoreLinks[project.title] && (
+          {(project as any).url && (
             <a
-              href={playStoreLinks[project.title]}
+              href={(project as any).url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border transition-all duration-300 hover:-translate-y-0.5 flex-shrink-0"
@@ -682,10 +662,10 @@ function ProjectCard({
                 e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
               }}
             >
-              <PlayStoreIcon size={12} />
+              <ExternalLink size={12} className="text-zinc-400" />
               <div className="leading-none">
-                <div className="text-[7px] text-zinc-500 uppercase tracking-wider">GET IT ON</div>
-                <div className="text-[10px] font-semibold text-zinc-300">Google Play</div>
+                <div className="text-[7px] text-zinc-500 uppercase tracking-wider">VIEW</div>
+                <div className="text-[10px] font-semibold text-zinc-300">Live Site</div>
               </div>
             </a>
           )}

@@ -183,8 +183,8 @@ export default function Experience() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-zinc-500 max-w-lg leading-relaxed"
           >
-            From Paytm's UPI payments to Flipkart's mobile checkout — 5+ years of
-            shipping apps and stores at India's most ambitious tech companies.
+            From Infosys to Freshworks to building my own SaaS — 6+ years of
+            solving complex problems at India's best tech companies and beyond.
           </motion.p>
         </motion.div>
 

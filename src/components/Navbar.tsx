@@ -53,7 +53,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="#" className="relative group">
-          <span className="text-xl font-bold tracking-tight text-shimmer">SS</span>
+          <span className="text-xl font-bold tracking-tight text-shimmer">VR</span>
           <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand group-hover:w-full transition-all duration-300" />
         </a>
 
