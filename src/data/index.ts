@@ -179,19 +179,19 @@ export const testimonials = [
     role: 'Owner, Clear Edge Hauling · Santa Clara, CA',
   },
   {
-    quote: "Our Shopify conversion rate jumped 34% after Vivek rebuilt our product pages. He thinks like a marketer and builds like an engineer — exactly what we needed.",
-    author: 'James Wright',
-    role: 'Founder, Curioh Pets · United Kingdom',
-  },
-  {
-    quote: "Vivek built a stunning restaurant website with online ordering and multi-language support. Table reservations increased 45% within the first month. Incredible work.",
-    author: 'Arjun Patel',
-    role: 'Manager, Tandoore · Germany',
+    quote: "We handed Vivek a half-broken MVP and he turned it into a platform processing 10M+ events a day. His architecture decisions saved us months of refactoring down the line.",
+    author: 'Sneha Iyer',
+    role: 'CTO, DataPulse Analytics · Bangalore',
   },
   {
     quote: "From brand identity to a high-converting launch page — Vivek delivered everything on time. We hit 2,500+ waitlist signups before we even launched the product.",
     author: 'Rohan Kapoor',
     role: 'Co-founder, SquadBurn · Activewear',
+  },
+  {
+    quote: "Vivek rebuilt our entire checkout flow and the numbers speak for themselves — 28% more completed orders in the first week. He understands UX at a level most devs don't.",
+    author: 'Laura Chen',
+    role: 'Head of Product, StyleKart · Singapore',
   },
 ];
 

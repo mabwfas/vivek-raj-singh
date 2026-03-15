@@ -682,7 +682,7 @@ export default function Projects() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
           >
-            Vivek's <span className="gradient-text">Projects</span>
+            My <span className="gradient-text">Projects</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, filter: 'blur(6px)' }}
