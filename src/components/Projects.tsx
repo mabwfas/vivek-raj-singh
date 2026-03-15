@@ -6,7 +6,7 @@ import { Star, TrendingUp, Smartphone, Activity, ExternalLink, ChevronLeft, Chev
 const projectImages: Record<string, string[]> = {
   'Clear Edge Hauling': ['/projects/clearedge-1.jpg', '/projects/clearedge-2.jpg', '/projects/clearedge-3.jpg'],
   'Curioh Pets': ['/projects/curioh-1.jpg', '/projects/curioh-2.jpg', '/projects/curioh-3.jpg'],
-  'Tandoore': ['/projects/tandoore-1.jpg', '/projects/tandoore-2.jpg', '/projects/tandoore-3.jpg'],
+  'Tandoore': ['/projects/tandoore-1.jpg', '/projects/tandoore-2.jpg', '/projects/tandoore-3.jpg', '/projects/tandoore-4.jpg'],
   'SquadBurn': ['/projects/squadburn-1.jpg', '/projects/squadburn-2.jpg', '/projects/squadburn-3.jpg'],
 };
 
