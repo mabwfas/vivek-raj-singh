@@ -74,9 +74,9 @@ export const experience = [
   {
     role: 'Software Engineer Intern → Junior Developer',
     company: 'Infosys',
-    type: 'Full-time',
+    type: 'Internship → Full-time',
     location: 'Pune, India',
-    period: 'Jan 2018 — Jun 2019',
+    period: 'Jun 2018 — Jun 2019',
     highlights: [
       'Selected from 5,000+ applicants for the Digital Innovation accelerator program — top 2% of cohort',
       'Built internal project management tool adopted by 3 business units serving 800+ daily active users',
