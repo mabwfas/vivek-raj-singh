@@ -69,7 +69,7 @@ function ImageCarousel({ images, title, color, isHovered }: { images: string[]; 
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="relative z-10 w-full max-w-[220px] md:max-w-[260px] h-auto rounded-2xl"
+          className="relative z-10 w-full max-w-[320px] md:max-w-[380px] h-auto rounded-2xl"
           style={{
             boxShadow: `0 25px 60px rgba(0,0,0,0.5), 0 0 40px ${color}10`,
             border: '1px solid rgba(255,255,255,0.06)',
@@ -169,7 +169,7 @@ function SmallImageCarousel({ images, title, color, isHovered }: { images: strin
           animate={{ opacity: 1, scale: isHovered ? 1.04 : 1, y: isHovered ? -4 : 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="w-full max-w-[200px] h-auto rounded-xl"
+          className="w-full max-w-[300px] h-auto rounded-xl"
           style={{
             boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${color}08`,
             border: '1px solid rgba(255,255,255,0.05)',
