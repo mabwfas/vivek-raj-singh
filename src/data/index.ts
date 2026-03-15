@@ -174,24 +174,24 @@ export const certifications = [
 
 export const testimonials = [
   {
-    quote: "Vivek didn't just build what we asked — he identified problems we didn't know we had and fixed them. Our platform revenue jumped 340% after his rebuild.",
-    author: 'Rahul Mehta',
-    role: 'CEO, CreditMate · Fintech',
+    quote: "Vivek took our outdated website and turned it into a lead-generating machine. We went from invisible on Google to ranking #1 locally — our phone hasn't stopped ringing since launch.",
+    author: 'Mike Thompson',
+    role: 'Owner, Clear Edge Hauling · Santa Clara, CA',
   },
   {
-    quote: "We had 3 agencies fail on this project before Vivek. He shipped the entire platform in 6 weeks — on budget, with features we didn't even think were possible.",
-    author: 'Sarah Chen',
-    role: 'VP Product, TalentBridge · HR Tech',
+    quote: "Our Shopify conversion rate jumped 34% after Vivek rebuilt our product pages. He thinks like a marketer and builds like an engineer — exactly what we needed.",
+    author: 'James Wright',
+    role: 'Founder, Curioh Pets · United Kingdom',
   },
   {
-    quote: "The analytics platform Vivek built generates more actionable insights than tools costing 10x more. Our clients love it.",
-    author: 'Amit Sharma',
-    role: 'Founder, DataPulse · Analytics',
+    quote: "Vivek built a stunning restaurant website with online ordering and multi-language support. Table reservations increased 45% within the first month. Incredible work.",
+    author: 'Arjun Patel',
+    role: 'Manager, Tandoore · Germany',
   },
   {
-    quote: "I've worked with dozens of developers. Vivek is the only one who thinks like a business owner. Every technical decision he makes is tied to ROI.",
-    author: 'Priya Kapoor',
-    role: 'CTO, StyleKart · E-Commerce',
+    quote: "From brand identity to a high-converting launch page — Vivek delivered everything on time. We hit 2,500+ waitlist signups before we even launched the product.",
+    author: 'Rohan Kapoor',
+    role: 'Co-founder, SquadBurn · Activewear',
   },
 ];
 

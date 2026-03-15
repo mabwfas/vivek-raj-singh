@@ -17,18 +17,19 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden antialiased">
       <Navbar />
-      <Hero />
-      <Showcase />
-      <About />
-      <Experience />
-      <Projects />
-      <CaseStudy />
-      <Process />
-      <Skills />
-
-      <Testimonials />
-      <Pricing />
-      <Contact />
+      <main>
+        <Hero />
+        <Showcase />
+        <About />
+        <Experience />
+        <Projects />
+        <CaseStudy />
+        <Process />
+        <Skills />
+        <Testimonials />
+        <Pricing />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

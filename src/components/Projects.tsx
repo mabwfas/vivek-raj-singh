@@ -93,7 +93,7 @@ function FloatingWidget({
 }
 
 /* ── Mini sparkline chart (decorative) ── */
-function MiniSparkline({ color, delay }: { color: string; delay: number }) {
+function MiniSparkline({ color, delay, metric }: { color: string; delay: number; metric?: string }) {
   const points = [40, 55, 35, 65, 45, 70, 50, 75, 60, 80, 55, 85, 70, 90];
   const width = 100;
   const height = 32;
@@ -119,7 +119,7 @@ function MiniSparkline({ color, delay }: { color: string; delay: number }) {
       >
         <div className="flex items-center justify-between mb-1.5">
           <span className="text-[11px] sm:text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Growth</span>
-          <span className="text-[11px] sm:text-[10px] font-bold" style={{ color }}>+127%</span>
+          <span className="text-[11px] sm:text-[10px] font-bold" style={{ color }}>{metric || '+127%'}</span>
         </div>
         <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none">
           <defs>
@@ -252,6 +252,7 @@ function FeaturedProjectCard({
                 <img
                   src={imgSrc}
                   alt={project.title}
+                  loading="lazy"
                   className="relative z-10 w-full max-w-[220px] md:max-w-[260px] h-auto rounded-2xl"
                   style={{
                     boxShadow: `0 25px 60px rgba(0,0,0,0.5), 0 0 40px ${project.color}10`,
@@ -425,7 +426,7 @@ function FeaturedProjectCard({
           delay={0.8}
           position="top-5 left-5 md:top-auto md:bottom-20 md:right-[38%]"
         />
-        <MiniSparkline color={project.color} delay={0.9} />
+        <MiniSparkline color={project.color} delay={0.9} metric={project.metric} />
       </div>
 
       {/* ── Scanline overlay on hover ── */}
@@ -509,6 +510,7 @@ function ProjectCard({
             <motion.img
               src={imgSrc}
               alt={project.title}
+              loading="lazy"
               className="w-full max-w-[200px] h-auto rounded-xl"
               animate={{ scale: isHovered ? 1.04 : 1, y: isHovered ? -4 : 0 }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}

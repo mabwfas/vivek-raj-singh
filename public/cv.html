@@ -18,7 +18,7 @@ body{background:#fff;margin:0;padding:0;font-size:9px}
 .cv-sidebar h2{margin:8px 0 4px;font-size:8.5px;letter-spacing:1.5px;padding-bottom:3px}
 .cv-sidebar h2:first-of-type{margin-top:8px}
 .cv-avatar{width:52px;height:52px;font-size:20px;margin-bottom:8px}
-.cv-sidebar img{width:52px!important;height:52px!important;margin-bottom:8px!important}
+.cv-sidebar img{width:52px!important;height:52px!important;margin-bottom:8px!important;border-width:2px!important}
 .cv-contact li{font-size:8px;margin:2px 0;gap:4px}
 .cv-contact svg{width:10px;height:10px}
 .cv-sb-item{margin:2px 0}
@@ -192,7 +192,8 @@ body{background:#fff;margin:0;padding:0;font-size:9px}
 
 <div class="cv-page">
   <aside class="cv-sidebar">
-    <div class="cv-avatar">VR</div>
+    <img src="/vivek.jpg" alt="Vivek Raj Singh" style="width:90px;height:90px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block;border:3px solid rgba(255,255,255,.15)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="cv-avatar" style="display:none">VR</div>
 
     <h2>Contact</h2>
     <ul class="cv-contact">

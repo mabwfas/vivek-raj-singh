@@ -29,7 +29,7 @@ export default function Process() {
             My <span className="gradient-text">Process</span>
           </h2>
           <p className="text-zinc-500 max-w-xl mx-auto text-sm">
-            A proven 5-step methodology for delivering high-quality mobile apps on time.
+            A proven 5-step methodology for delivering high-quality web projects on time.
           </p>
         </motion.div>
 

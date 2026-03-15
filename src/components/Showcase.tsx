@@ -78,17 +78,24 @@ export default function Showcase() {
                 <div className="text-sm font-semibold text-white mb-1">Clear Edge</div>
                 <div className="text-[10px] text-zinc-500 font-mono">Live • #1 SEO</div>
               </div>
-              {['Curioh Pets', 'Tandoore', 'SquadBurn', 'More Projects'].map((app, i) => (
+              {['Curioh Pets', 'Tandoore', 'SquadBurn'].map((app, i) => (
                 <div
                   key={app}
                   className="rounded-lg bg-white/[0.02] border border-white/[0.04] p-3 hover:bg-white/[0.04] transition-colors"
                 >
                   <div className="text-xs text-zinc-400">{app}</div>
                   <div className="text-[10px] text-zinc-600 mt-0.5 font-mono">
-                    {['E-Commerce', 'Restaurant', 'Fitness Brand', 'View All'][i]}
+                    {['E-Commerce', 'Restaurant', 'Fitness Brand'][i]}
                   </div>
                 </div>
               ))}
+              <a
+                href="/portfolio/"
+                className="rounded-lg bg-white/[0.02] border border-white/[0.04] p-3 hover:bg-white/[0.04] transition-colors block"
+              >
+                <div className="text-xs text-zinc-400">More Projects</div>
+                <div className="text-[10px] text-zinc-600 mt-0.5 font-mono">View All</div>
+              </a>
             </div>
 
             {/* Main content area */}
@@ -126,6 +133,7 @@ export default function Showcase() {
                   <div className="flex gap-1">
                     {['1M', '3M', '6M', '1Y'].map((period, i) => (
                       <button
+                        type="button"
                         key={period}
                         className={`text-[10px] px-2.5 py-1 rounded-md font-mono transition-colors ${
                           i === 3
