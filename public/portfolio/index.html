@@ -113,6 +113,14 @@
     .store-link .store-label { font-size: 10px; color: var(--dim); font-weight: 400; line-height: 1; }
     .store-link .store-name { line-height: 1.1; }
 
+    /* Screenshot Gallery */
+    .screenshot-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+    .screenshot-gallery img { width: 100%; height: 180px; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid var(--border); transition: all 0.3s; cursor: pointer; }
+    .screenshot-gallery img:hover { border-color: var(--brand); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+    .screenshot-gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .screenshot-gallery.cols-4 img { height: 150px; }
+    @media (max-width: 640px) { .screenshot-gallery, .screenshot-gallery.cols-4 { grid-template-columns: 1fr 1fr; } .screenshot-gallery img, .screenshot-gallery.cols-4 img { height: 140px; } }
+
     /* Why Me section */
     .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .why-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; transition: border-color 0.3s; }
@@ -328,6 +336,11 @@
           <div class="impact-chip"><div class="val">60%</div><div class="lbl mono">Mobile Traffic</div></div>
           <div class="impact-chip"><div class="val">&lt;1.5s</div><div class="lbl mono">Load Time</div></div>
         </div>
+        <div class="screenshot-gallery">
+          <img src="/projects/clearedge-1.jpg" alt="Clear Edge Hauling - Homepage" loading="lazy" />
+          <img src="/projects/clearedge-2.jpg" alt="Clear Edge Hauling - Booking" loading="lazy" />
+          <img src="/projects/clearedge-3.jpg" alt="Clear Edge Hauling - Services" loading="lazy" />
+        </div>
         <div class="tech-row">
           <span class="tech-tag">WordPress</span><span class="tech-tag">PHP</span><span class="tech-tag">JavaScript</span><span class="tech-tag">SEO</span><span class="tech-tag">Google Maps API</span><span class="tech-tag">Responsive Design</span>
         </div>
@@ -385,6 +398,11 @@
           <div class="impact-chip"><div class="val">-28%</div><div class="lbl mono">Bounce Rate</div></div>
           <div class="impact-chip"><div class="val">65%</div><div class="lbl mono">Mobile Sales</div></div>
           <div class="impact-chip"><div class="val">+22%</div><div class="lbl mono">Avg Order Value</div></div>
+        </div>
+        <div class="screenshot-gallery">
+          <img src="/projects/curioh-1.jpg" alt="Curioh Pets - Homepage" loading="lazy" />
+          <img src="/projects/curioh-2.jpg" alt="Curioh Pets - Product Page" loading="lazy" />
+          <img src="/projects/curioh-3.jpg" alt="Curioh Pets - Store" loading="lazy" />
         </div>
         <div class="tech-row">
           <span class="tech-tag">Shopify</span><span class="tech-tag">Liquid</span><span class="tech-tag">JavaScript</span><span class="tech-tag">CSS3</span><span class="tech-tag">Shopify API</span><span class="tech-tag">Conversion Optimization</span>
@@ -444,6 +462,13 @@
           <div class="impact-chip"><div class="val">95/100</div><div class="lbl mono">Page Speed</div></div>
           <div class="impact-chip"><div class="val">-35%</div><div class="lbl mono">Bounce Rate</div></div>
         </div>
+        <div class="screenshot-gallery cols-4">
+          <img src="/projects/tandoore-1.jpg" alt="Tandoore - Homepage" loading="lazy" />
+          <img src="/projects/tandoore-2.jpg" alt="Tandoore - Menu" loading="lazy" />
+          <img src="/projects/tandoore-3.jpg" alt="Tandoore - Reservation" loading="lazy" />
+          <img src="/projects/tandoore-4.jpg" alt="Tandoore - Gallery" loading="lazy" />
+        </div>
+
         <div class="tech-row">
           <span class="tech-tag">WordPress</span><span class="tech-tag">WooCommerce</span><span class="tech-tag">PHP</span><span class="tech-tag">JavaScript</span><span class="tech-tag">GSAP</span><span class="tech-tag">Multi-language</span>
         </div>
@@ -502,6 +527,12 @@
           <div class="impact-chip"><div class="val">4.2min</div><div class="lbl mono">Avg Session</div></div>
           <div class="impact-chip"><div class="val">1.2K+</div><div class="lbl mono">Social Shares</div></div>
         </div>
+        <div class="screenshot-gallery">
+          <img src="/projects/squadburn-1.jpg" alt="SquadBurn - Landing Page" loading="lazy" />
+          <img src="/projects/squadburn-2.jpg" alt="SquadBurn - Brand Design" loading="lazy" />
+          <img src="/projects/squadburn-3.jpg" alt="SquadBurn - Early Access" loading="lazy" />
+        </div>
+
         <div class="tech-row">
           <span class="tech-tag">Next.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind CSS</span><span class="tech-tag">Framer Motion</span><span class="tech-tag">Shopify</span><span class="tech-tag">Figma</span>
         </div>

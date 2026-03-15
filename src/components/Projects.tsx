@@ -158,7 +158,7 @@ function SmallImageCarousel({ images, title, color, isHovered }: { images: strin
   if (validImages.length === 0) return null;
 
   return (
-    <div className="relative z-[1] flex items-start justify-center h-full pt-4 px-3">
+    <div className="relative z-[1] flex items-center justify-center h-full px-3 py-3">
       <AnimatePresence mode="wait">
         <motion.img
           key={validImages[current]}
@@ -169,7 +169,7 @@ function SmallImageCarousel({ images, title, color, isHovered }: { images: strin
           animate={{ opacity: 1, scale: isHovered ? 1.04 : 1, y: isHovered ? -4 : 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="w-full max-w-[300px] h-auto rounded-xl"
+          className="w-full h-auto rounded-xl object-cover"
           style={{
             boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${color}08`,
             border: '1px solid rgba(255,255,255,0.05)',
@@ -671,7 +671,7 @@ function ProjectCard({
       />
 
       {/* Image section */}
-      <div className="relative overflow-hidden aspect-[4/5] max-h-[380px]">
+      <div className="relative overflow-hidden aspect-[16/10]">
         {/* Layered background */}
         <div
           className="absolute inset-0"
