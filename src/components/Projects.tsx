@@ -1,14 +1,202 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import { projects } from '../data';
-import { Star, TrendingUp, Smartphone, Activity, ExternalLink } from 'lucide-react';
+import { Star, TrendingUp, Smartphone, Activity, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const projectImages: Record<string, string> = {
-  'Clear Edge Hauling': '/projects/clearedge.jpg',
-  'Curioh Pets': '/projects/curioh.jpg',
-  'Tandoore': '/projects/tandoore.jpg',
-  'SquadBurn': '/projects/squadburn.jpg',
+const projectImages: Record<string, string[]> = {
+  'Clear Edge Hauling': ['/projects/clearedge-1.jpg', '/projects/clearedge-2.jpg', '/projects/clearedge-3.jpg'],
+  'Curioh Pets': ['/projects/curioh-1.jpg', '/projects/curioh-2.jpg', '/projects/curioh-3.jpg'],
+  'Tandoore': ['/projects/tandoore-1.jpg', '/projects/tandoore-2.jpg', '/projects/tandoore-3.jpg'],
+  'SquadBurn': ['/projects/squadburn-1.jpg', '/projects/squadburn-2.jpg', '/projects/squadburn-3.jpg'],
 };
+
+/* ── Image Carousel with auto-play and manual nav ── */
+function ImageCarousel({ images, title, color, isHovered }: { images: string[]; title: string; color: string; isHovered: boolean }) {
+  const [current, setCurrent] = useState(0);
+  const [validImages, setValidImages] = useState<string[]>(images);
+
+  // Filter out broken images on mount
+  useEffect(() => {
+    const check = async () => {
+      const valid: string[] = [];
+      for (const src of images) {
+        const img = new Image();
+        img.src = src;
+        try {
+          await new Promise<void>((resolve, reject) => {
+            img.onload = () => resolve();
+            img.onerror = () => reject();
+          });
+          valid.push(src);
+        } catch {
+          // skip broken image
+        }
+      }
+      if (valid.length > 0) setValidImages(valid);
+    };
+    check();
+  }, [images]);
+
+  // Auto-advance every 4s when not hovered
+  useEffect(() => {
+    if (validImages.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % validImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [validImages.length]);
+
+  if (validImages.length === 0) return null;
+
+  const goTo = (dir: 'prev' | 'next', e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrent((prev) =>
+      dir === 'next'
+        ? (prev + 1) % validImages.length
+        : (prev - 1 + validImages.length) % validImages.length,
+    );
+  };
+
+  return (
+    <div className="relative w-full h-full">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={validImages[current]}
+          src={validImages[current]}
+          alt={`${title} screenshot ${current + 1}`}
+          loading="lazy"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="relative z-10 w-full max-w-[220px] md:max-w-[260px] h-auto rounded-2xl"
+          style={{
+            boxShadow: `0 25px 60px rgba(0,0,0,0.5), 0 0 40px ${color}10`,
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+        />
+      </AnimatePresence>
+
+      {/* Nav arrows — show on hover when multiple images */}
+      {validImages.length > 1 && isHovered && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => goTo('prev', e)}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-md transition-all hover:scale-110"
+            style={{ background: 'rgba(0,0,0,0.6)', border: `1px solid ${color}30` }}
+          >
+            <ChevronLeft size={14} style={{ color }} />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => goTo('next', e)}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-md transition-all hover:scale-110"
+            style={{ background: 'rgba(0,0,0,0.6)', border: `1px solid ${color}30` }}
+          >
+            <ChevronRight size={14} style={{ color }} />
+          </button>
+        </>
+      )}
+
+      {/* Dot indicators */}
+      {validImages.length > 1 && (
+        <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+          {validImages.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
+              className="w-1.5 h-1.5 rounded-full transition-all duration-300"
+              style={{
+                background: i === current ? color : 'rgba(255,255,255,0.2)',
+                boxShadow: i === current ? `0 0 6px ${color}60` : 'none',
+                transform: i === current ? 'scale(1.3)' : 'scale(1)',
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Small carousel for regular project cards ── */
+function SmallImageCarousel({ images, title, color, isHovered }: { images: string[]; title: string; color: string; isHovered: boolean }) {
+  const [current, setCurrent] = useState(0);
+  const [validImages, setValidImages] = useState<string[]>(images);
+
+  useEffect(() => {
+    const check = async () => {
+      const valid: string[] = [];
+      for (const src of images) {
+        const img = new Image();
+        img.src = src;
+        try {
+          await new Promise<void>((resolve, reject) => {
+            img.onload = () => resolve();
+            img.onerror = () => reject();
+          });
+          valid.push(src);
+        } catch {
+          // skip
+        }
+      }
+      if (valid.length > 0) setValidImages(valid);
+    };
+    check();
+  }, [images]);
+
+  useEffect(() => {
+    if (validImages.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % validImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [validImages.length]);
+
+  if (validImages.length === 0) return null;
+
+  return (
+    <div className="relative z-[1] flex items-start justify-center h-full pt-4 px-3">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={validImages[current]}
+          src={validImages[current]}
+          alt={`${title} screenshot ${current + 1}`}
+          loading="lazy"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, scale: isHovered ? 1.04 : 1, y: isHovered ? -4 : 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="w-full max-w-[200px] h-auto rounded-xl"
+          style={{
+            boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${color}08`,
+            border: '1px solid rgba(255,255,255,0.05)',
+          }}
+        />
+      </AnimatePresence>
+      {/* Dot indicators */}
+      {validImages.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+          {validImages.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
+              className="w-1.5 h-1.5 rounded-full transition-all duration-300"
+              style={{
+                background: i === current ? color : 'rgba(255,255,255,0.2)',
+                boxShadow: i === current ? `0 0 6px ${color}60` : 'none',
+                transform: i === current ? 'scale(1.3)' : 'scale(1)',
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ── Corner squares — 21st.dev Dark Grid ── */
 function CornerSquares() {
@@ -174,7 +362,7 @@ function FeaturedProjectCard({
     ref.current.style.setProperty('--mouse-y', `${y}%`);
   }, []);
 
-  const imgSrc = projectImages[project.title];
+  const imgSrcs = projectImages[project.title] || [];
 
   return (
     <motion.div
@@ -207,7 +395,7 @@ function FeaturedProjectCard({
 
       {/* ── Main layout: image + content side by side ── */}
       <div className={`flex flex-col ${variant === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} h-full`}>
-        {/* ── Image section — tall phone showcase ── */}
+        {/* ── Image section — carousel showcase ── */}
         <div className="relative md:w-[48%] flex-shrink-0 overflow-hidden">
           {/* Deep layered background */}
           <div
@@ -230,9 +418,9 @@ function FeaturedProjectCard({
             }}
           />
 
-          {/* Phone image — large, prominent */}
+          {/* Image carousel */}
           <div className="relative z-10 flex items-center justify-center h-full py-6 px-4 md:px-6">
-            {imgSrc && (
+            {imgSrcs.length > 0 && (
               <motion.div
                 className="relative"
                 animate={{
@@ -242,23 +430,13 @@ function FeaturedProjectCard({
                 transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                 style={{ perspective: '800px' }}
               >
-                {/* Phone frame glow */}
+                {/* Frame glow */}
                 <div
                   className="absolute -inset-3 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                   style={{ background: `${project.color}15` }}
                 />
 
-                {/* Actual phone image */}
-                <img
-                  src={imgSrc}
-                  alt={project.title}
-                  loading="lazy"
-                  className="relative z-10 w-full max-w-[220px] md:max-w-[260px] h-auto rounded-2xl"
-                  style={{
-                    boxShadow: `0 25px 60px rgba(0,0,0,0.5), 0 0 40px ${project.color}10`,
-                    border: `1px solid rgba(255,255,255,0.06)`,
-                  }}
-                />
+                <ImageCarousel images={imgSrcs} title={project.title} color={project.color} isHovered={isHovered} />
 
                 {/* Reflection effect */}
                 <div
@@ -471,7 +649,7 @@ function ProjectCard({
     ref.current.style.setProperty('--mouse-y', `${y}%`);
   }, []);
 
-  const imgSrc = projectImages[project.title];
+  const imgSrcs = projectImages[project.title] || [];
 
   return (
     <motion.div
@@ -505,21 +683,8 @@ function ProjectCard({
           }}
         />
 
-        {imgSrc ? (
-          <div className="relative z-[1] flex items-start justify-center h-full pt-4 px-3">
-            <motion.img
-              src={imgSrc}
-              alt={project.title}
-              loading="lazy"
-              className="w-full max-w-[200px] h-auto rounded-xl"
-              animate={{ scale: isHovered ? 1.04 : 1, y: isHovered ? -4 : 0 }}
-              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              style={{
-                boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${project.color}08`,
-                border: '1px solid rgba(255,255,255,0.05)',
-              }}
-            />
-          </div>
+        {imgSrcs.length > 0 ? (
+          <SmallImageCarousel images={imgSrcs} title={project.title} color={project.color} isHovered={isHovered} />
         ) : (
           <div
             className="w-full h-full"
